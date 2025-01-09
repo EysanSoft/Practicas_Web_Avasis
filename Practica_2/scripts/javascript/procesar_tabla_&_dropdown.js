@@ -20,7 +20,7 @@ function ajaxTabla(postID) {
       postID: postID,
     },
     success: function (result) {
-      //let datos = JSON.parse(result);
+      // let datos = JSON.parse(result);
       // console.log(result[0].name);
       result.forEach((element) => {
         $("#miTabla").append(

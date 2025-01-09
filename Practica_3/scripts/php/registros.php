@@ -22,7 +22,7 @@ if(empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim(
             'password' => $password,
         );
         $json_data = json_encode($data);
-        $url = 'https://3e0c-177-229-104-23.ngrok-free.app/user/create';
+        $url = 'https://pruebas.avasisservices.com/user/create';
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);

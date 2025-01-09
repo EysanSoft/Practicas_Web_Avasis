@@ -81,6 +81,7 @@
             </div>
         </div>
     </nav>
+    <!-- Tabla Usuarios. -->
     <div class="row mt-5 justify-content-center">
         <div class="col-10">
             <div class="table-responsive">
@@ -102,9 +103,9 @@
                     </tbody>
                 </table>
             </div>
-            <button class="btn btn-primary" id="botonModalEU">Editar</button>
         </div>
     </div>
+    <!-- Modal Editar Usuario. -->
     <div
         class="modal fade"
         id="modalEditarUsuario"
@@ -116,7 +117,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    Editar Usuario
+                    <b>Editar Usuario</b>
                     <button
                         type="button"
                         class="btn-close"
@@ -127,91 +128,12 @@
                 <div class="modal-body">
                     <div class="row mx-3 mt-2 justify-content-center">
                         <div class="col-12">
-
                             <form
                                 action="../scripts/php/editar_usuarios.php"
                                 class="form"
                                 id="editarUsuariosForm"
                                 method="POST">
-                                <div class="d.none">
-                                    <input
-                                        type="hidden"
-                                        class="form-control"
-                                        id="id"
-                                        name="id"
-                                        value="6"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="nombre" class="form-label">Nombre</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="nombre"
-                                        name="nombre"
-                                        maxlength="15"
-                                        value="Eyssy"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="apellido" class="form-label">Apellido</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="apellido"
-                                        name="apellido"
-                                        maxlength="30"
-                                        value="Hernandez Sanchez"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="correo" class="form-label">Correo</label>
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="correo"
-                                        name="correo"
-                                        value="dummy23@outlook.com"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="telefono" class="form-label">Telefono</label>
-                                    <input
-                                        type="tel"
-                                        class="form-control"
-                                        id="telefono"
-                                        name="telefono"
-                                        value="9617654321"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="contra" class="form-label">Contraseña</label>
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                        id="contra"
-                                        name="contra"
-                                        value="newSecret"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="conContra" class="form-label">Confirmar Contraseña</label>
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                        id="conContra"
-                                        name="conContra"
-                                        value="newSecret"
-                                    />
-                                </div>
-                                <div class="alert alert-danger" id="mensajeContraNoCo" role="alert">
-                                    ¡La contraseñas ingresadas no coinciden! Vuelva a intentarlo.
-                                </div>
-                                <div class="mb-3">
-                                    <button class="btn btn-primary" id="submit">Ingresar</button>
-                                </div>
                             </form>
-                            
                         </div>
                     </div>
                 </div>

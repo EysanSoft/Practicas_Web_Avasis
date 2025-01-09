@@ -65,12 +65,15 @@ include 'scripts/php/peticion_indice.php';
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="../Practica_3/index.html">Formulario con Jquery Submit</a>
+                <a class="dropdown-item" href="../Practica_3/index.php">Formulario con Jquery Submit</a>
               </li>
               <li>
                 <a
                   class="dropdown-item"
                   href="../Practica_3/views/ejemplos_jquery.html">Demo Jquery</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../Practica_3/views/tabla_usuarios.php">Tabla Usuarios</a>
               </li>
             </ul>
           </li>
@@ -118,4 +121,5 @@ include 'scripts/php/peticion_indice.php';
   <script src="../libs/jquery-3.7.1.min.js"></script>
   <script src="scripts/javascript/procesar_tabla_&_dropdown.js"></script>
 </body>
+
 </html>

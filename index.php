@@ -37,8 +37,11 @@
                             Práctica 3
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./Practica_3/index.html">Formulario con Jquery Submit</a></li>
+                            <li><a class="dropdown-item" href="./Practica_3/index.php">Formulario con Jquery Submit</a></li>
                             <li><a class="dropdown-item" href="./Practica_3/views/ejemplos_jquery.html">Demo Jquery</a></li>
+                            <li>
+                                <a class="dropdown-item" href="./Practica_3/views/tabla_usuarios.php">Tabla Usuarios</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -53,4 +56,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../libs/jquery-3.7.1.min.js"></script>
 </body>
+
 </html>

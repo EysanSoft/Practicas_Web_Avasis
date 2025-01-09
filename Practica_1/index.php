@@ -64,8 +64,11 @@ echo "</pre>";
               Práctica 3
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="../Practica_3/index.html">Formulario con Jquery Submit</a></li>
+              <li><a class="dropdown-item" href="../Practica_3/index.php">Formulario con Jquery Submit</a></li>
               <li><a class="dropdown-item" href="../Practica_3/views/ejemplos_jquery.html">Demo Jquery</a></li>
+              <li>
+                <a class="dropdown-item" href="../Practica_3/views/tabla_usuarios.php">Tabla Usuarios</a>
+              </li>
             </ul>
           </li>
         </ul>

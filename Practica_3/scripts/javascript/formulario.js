@@ -16,11 +16,11 @@ $(document).ready(function () {
         processData: false,
         contentType: false,
         success: function (response) {
-          if (response == true) {
+          if (response.status == true) {
             $("#modalAlert").modal("show");
           } 
           else {
-            alert("Las contraseñas no coinciden");
+            alert(response.message);
           }
         },
         error: function (error) {

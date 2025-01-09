@@ -105,6 +105,7 @@
               class="form-control"
               id="nombre"
               name="nombre"
+              maxlength="15"
               required
             />
           </div>
@@ -115,6 +116,7 @@
               class="form-control"
               id="apellido"
               name="apellido"
+              maxlength="30"
               required
             />
           </div>
@@ -216,6 +218,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../libs/jquery-3.7.1.min.js"></script>
-    <script src="scripts/javascript/formulario.js"></script>
+    <script src="scripts/javascript/formulario.js?v=<?php echo uniqid()?>"></script>
   </body>
 </html>

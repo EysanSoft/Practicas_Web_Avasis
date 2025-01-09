@@ -35,34 +35,31 @@ $(document).ready(function () {
   */
   // Responder al submit del formulario editar usuarios.
   $("#editarUsuariosForm").submit(function (e) {
-    let contra_1 = $("#contra").val();
-    let contra_2 = $("#conContra").val();
-    if (contra_1 == contra_2) {
-      e.preventDefault();
-      let datos = new FormData(this);
-      let urlForm = $(this).attr("action");
-      $.ajax({
-        url: urlForm,
-        type: "POST",
-        data: datos,
-        dataType: "json",
-        processData: false,
-        contentType: false,
-        success: function (response) {
-          if (response.status == true) {
-            alert("Ha ocurrido un error");
-          } else {
-            alert(response.message);
-          }
-        },
-        error: function (error) {
-          alert("An error occurred: " + error);
-        },
-      });
-    } else {
-      $("#mensajeContraNoCo").show();
-      return false;
-    }
+    e.preventDefault();
+    let datos = new FormData(this);
+    let urlForm = $(this).attr("action");
+    $.ajax({
+      url: urlForm,
+      type: "POST",
+      data: datos,
+      dataType: "json",
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        if (response.status == true) {
+          alert(response.message);
+          $("#modalEditarUsuario").modal("hide");
+          location.reload();
+        } 
+        else {
+          // Error del servidor...
+          alert(response.message);
+        }
+      },
+      error: function (error) {
+        alert("An error occurred: " + error);
+      },
+    });
   });
 });
 
@@ -108,14 +105,10 @@ function abrirModalEditarUsuario(postID) {
             `<input type="tel" class="form-control" id="telefono" name="telefono" value="${element.phone}"/>` +
             `</div>` +
             `<div class="mb-3">` +
-            `<div class="alert alert-danger" id="mensajeContraNoCo" role="alert">` +
-            `¡La contraseñas ingresadas no coinciden! Vuelva a intentarlo.` +
-            `</div>` +
-            `<div class="mb-3">` +
             `<button class="btn btn-primary" id="submit">Guardar Cambios</button>` +
             `</div>`
         );
-        $("#mensajeContraNoCo").hide();
+        // $("#mensajeContraNoCo").hide();
         $("#modalEditarUsuario").modal("show");
       });
     },

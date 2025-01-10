@@ -126,15 +126,57 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <div class="row mx-3 mt-2 justify-content-center">
-                        <div class="col-12">
-                            <form
-                                action="../scripts/php/peticion_editar_usuarios.php"
-                                class="form"
-                                id="editarUsuariosForm"
-                                method="POST">
+
+                        <div class="col-12" id="contenedorDinamico1">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page">Datos de Usuario</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tabCambiarContra">Cambiar Contraseña</a>
+                                </li>
+                            </ul>
+                            <form action="../scripts/php/peticion_editar_usuarios.php" class="form" id="editarUsuariosForm" method="POST">
+                                <!-- Datos... -->
                             </form>
                         </div>
+
+                        <div class="col-12" id="contenedorDinamico2">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tabCambiarUsuario">Datos de Usuario</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" earia-current="pag">Cambiar Contraseña</a>
+                                </li>
+                            </ul>
+                            <form action="../scripts/php/peticion_editar_contra.php" class="form" id="editarContraForm" method="POST">
+                                <div class="mb-3">
+                                    <label for="contraOG" class="form-label">Contraseña Actual</label>
+                                    <input type="password" class="form-control" id="contraOG" name="contraOG" required/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contra" class="form-label">Contraseña Nueva</label>
+                                    <input type="password" class="form-control" id="contra" name="contra" required/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="conContra" class="form-label">Confirmar Contraseña Nueva</label>
+                                    <input type="password" class="form-control" id="conContra" name="conContra" required/>
+                                </div>
+                                <div class="alert alert-danger" id="mensajeConNoCoin" role="alert">
+                                    ¡La contraseñas ingresadas no coinciden! Vuelva a intentarlo.
+                                </div>
+                                <div class="alert alert-danger" id="mensajeConInco" role="alert">
+                                    ¡La contraseña ingresada es incorrecta! Vuelva a intentarlo.
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-primary" id="submit">Cambiar de Contraseña</button>
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -173,4 +215,5 @@
     <script src="../../libs/jquery-3.7.1.min.js"></script>
     <script src="../scripts/javascript/tabla_usuarios.js"></script>
 </body>
+
 </html>

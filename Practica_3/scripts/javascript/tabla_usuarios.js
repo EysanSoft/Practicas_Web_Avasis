@@ -64,12 +64,57 @@ $(document).ready(function () {
     });
   });
 
+  // Responder al submit del formulario editar la contraseña con un ajax POST.
+  $("#editarContraForm").submit(function (e) {
+    e.preventDefault();
+    // Si es necesario la id, buscar la forma de incluirlo en el formulario.
+    let datos = new FormData(this);
+    let urlForm = $(this).attr("action");
+    // Posiblemente se tenga que hacer dos peticiones.
+    $.ajax({
+      url: urlForm,
+      type: "POST",
+      data: datos,
+      dataType: "json",
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        if (response.status == true) {
+          alert(response.message);
+          $("#modalEditarUsuario").modal("hide");
+          location.reload();
+        } 
+        else {
+          // Error del servidor...
+          alert(response.message);
+        }
+      },
+      error: function (error) {
+        alert("An error occurred: " + error);
+      },
+    });
+  });
+
+  // Sucio hack para simular el funcionamiento de tabs en una modal.
+  $("#tabCambiarContra").on("click", function () {
+    $("#contenedorDinamico1").hide();
+    $("#contenedorDinamico2").show();
+  });
+  $("#tabCambiarUsuario").on("click", function () {
+    $("#contenedorDinamico1").show();
+    $("#contenedorDinamico2").hide();
+  });
 });
 /*
   Función que obtiene el usuario desde la tabla, con su respectivo ID,
   carga los datos en el formulario editar usuario, y abre la respectiva modal.
 */
 function abrirModalEditarUsuario(postID) {
+  //  Ocultar los elementos dinamicos...
+  $("#mensajeConNoCoin").hide();
+  $("#mensajeConInco").hide();
+  $("#contenedorDinamico2").hide();
+
   /*
     Vacia el contenido del formulario cada vez que la función es llamado,
     para que pueda ser llenado de nuevo con los datos del usuario con un ajax POST.
@@ -111,7 +156,6 @@ function abrirModalEditarUsuario(postID) {
             `<button class="btn btn-primary" id="submit">Guardar Cambios</button>` +
             `</div>`
         );
-        // $("#mensajeContraNoCo").hide();
         $("#modalEditarUsuario").modal("show");
       });
     },
@@ -120,6 +164,7 @@ function abrirModalEditarUsuario(postID) {
     },
   });
 }
+
 /*
 Función para abrir la modal de eliminar usuarios,
 y cargar el boton de eliminar con su ID correspondiente,

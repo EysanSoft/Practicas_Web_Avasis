@@ -129,13 +129,39 @@
                     <div class="row mx-3 mt-2 justify-content-center">
                         <div class="col-12">
                             <form
-                                action="../scripts/php/editar_usuarios.php"
+                                action="../scripts/php/peticion_editar_usuarios.php"
                                 class="form"
                                 id="editarUsuariosForm"
                                 method="POST">
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Eliminar Usuario. -->
+    <div
+        class="modal fade"
+        id="modalEliminarUsuario"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <b>Eliminar Usuario</b>
+                </div>
+                <div class="modal-body">
+                    <div class="row mx-3 mt-2 justify-content-center">
+                        <div class="col-12">
+                            <h4 class="text-center">¿Estas seguro de que quieres eliminar a este usuario?</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" id="modalEliminarUsuarioFooter">
                 </div>
             </div>
         </div>

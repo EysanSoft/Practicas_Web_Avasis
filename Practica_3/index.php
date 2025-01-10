@@ -84,7 +84,7 @@
   <div class="row mx-5 mt-5 justify-content-center">
     <div class="col-3">
       <form
-        action="scripts/php/registros.php"
+        action="scripts/php/peticion_registrar_usuario.php"
         class="form"
         id="myForm"
         method="POST">
@@ -197,7 +197,6 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="../libs/jquery-3.7.1.min.js"></script>
-  <script src="scripts/javascript/formulario.js?v=<?php echo uniqid() ?>"></script>
+  <script src="scripts/javascript/formulario_registro_de_usuarios.js?v=<?php echo uniqid() ?>"></script>
 </body>
-
 </html>

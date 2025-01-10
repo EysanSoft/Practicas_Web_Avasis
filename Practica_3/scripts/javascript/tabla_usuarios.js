@@ -2,9 +2,9 @@ $(document).ready(function () {
   // Eliminar el mensaje "Sin datos." en la tabla.
   $("#tablaUsuarios").empty();
 
-  // Cargar los datos de usuario en la tabla con una solicitud Ajax Get.
+  // Cargar los datos de usuario en la tabla con una solicitud Ajax GET.
   jQuery.ajax({
-    url: "../scripts/php/peticiones_tabla_usuarios.php",
+    url: "../scripts/php/peticion_todos_los_usuarios.php",
     type: "GET",
     dataType: "JSON",
     success: function (result) {
@@ -18,7 +18,7 @@ $(document).ready(function () {
             `<td>${element.lastName}</td>` +
             `<td>${element.phone}</td>` +
             `<td>${element.email}</td>` +
-            `<td><button class="btn btn-primary btnEditar" id="${element.userId}" onClick="abrirModalEditarUsuario(${element.userId})">Editar</button></td>` +
+            `<td><button class="btn btn-primary btnEditar" id="${element.userId}" onClick="abrirModalEditarUsuario(${element.userId})">Editar</button><button class="btn btn-danger" id="${element.userId}" onClick="abrirModalEliminarUsuario(${element.userId})">Eliminar</button></td>` +
             `</tr>`
         );
       });
@@ -27,13 +27,15 @@ $(document).ready(function () {
       console.error("Error:", error);
     },
   });
+
   /*
   $("#tablaUsuarios").on("click",".btnEditar", function () {
     let id = $(this).attr("id");
     alert("click: " + id);
   });
   */
-  // Responder al submit del formulario editar usuarios.
+
+  // Responder al submit del formulario editar usuarios con un ajax POST.
   $("#editarUsuariosForm").submit(function (e) {
     e.preventDefault();
     let datos = new FormData(this);
@@ -61,8 +63,8 @@ $(document).ready(function () {
       },
     });
   });
-});
 
+});
 /*
   Función que obtiene el usuario desde la tabla, con su respectivo ID,
   carga los datos en el formulario editar usuario, y abre la respectiva modal.
@@ -70,11 +72,12 @@ $(document).ready(function () {
 function abrirModalEditarUsuario(postID) {
   /*
     Vacia el contenido del formulario cada vez que la función es llamado,
-    para que pueda ser llenado de nuevo con los datos del usuario.
+    para que pueda ser llenado de nuevo con los datos del usuario con un ajax POST.
   */
   $("#editarUsuariosForm").empty();
   jQuery.ajax({
-    url: "../scripts/php/peticiones_usuario_por_id.php",
+    // Mejorar...
+    url: "../scripts/php/peticion_usuario_por_id.php",
     type: "POST",
     dataType: "JSON",
     data: {
@@ -114,6 +117,45 @@ function abrirModalEditarUsuario(postID) {
     },
     error: function (error) {
       console.error("Error:", error);
+    },
+  });
+}
+/*
+Función para abrir la modal de eliminar usuarios,
+y cargar el boton de eliminar con su ID correspondiente,
+vaciando el contenido del footer de la modal anterior.
+*/
+function abrirModalEliminarUsuario(postID) {
+  $("#modalEliminarUsuarioFooter").empty();
+  $("#modalEliminarUsuarioFooter").append(
+    `<button type="button" class="btn btn-danger id="${postID}" onClick="peticionEliminarUsuario(${postID})">Sí</button>` +
+    `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>`
+  );
+  $("#modalEliminarUsuario").modal("show");
+}
+
+// Función que realizar la peticion ajax POST para eliminar un usuario.
+function peticionEliminarUsuario(userID) {
+  jQuery.ajax({
+    url: "../scripts/php/peticion_eliminar_usuario_por_id.php",
+    type: "POST",
+    dataType: "JSON",
+    data: {
+      userID: userID,
+    },
+    success: function (response) {
+      if (response.status == true) {
+        alert(response.message);
+        $("#modalEliminarUsuario").modal("hide");
+        location.reload();
+      } 
+      else {
+        // Error del servidor...
+        alert(response.message);
+      }
+    },
+    error: function (error) {
+      alert("An error occurred: " + error);
     },
   });
 }

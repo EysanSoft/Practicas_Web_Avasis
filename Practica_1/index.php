@@ -1,4 +1,5 @@
 <?php
+// Petición directa con cURL.
 $url = "https://jsonplaceholder.typicode.com/posts";
 $ch = curl_init($url);
 
@@ -50,7 +51,7 @@ echo "</pre>";
               Práctica 1
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item active" href="/index.php">Peticiones con JS & PHP</a></li>
+              <li><a class="dropdown-item active" href="./index.php">Peticiones con JS & PHP</a></li>
               <li><a class="dropdown-item" href="./views/ejemplos_bs.html">Demo Boostrap</a></li>
             </ul>
           </li>
@@ -75,6 +76,7 @@ echo "</pre>";
       </div>
     </div>
   </nav>
+  <!-- Formulario de demostración. -->
   <div class="row mx-5 mt-3 justify-content-center">
     <div class="col-6">
       <h1 class="text-center">Inputs</h1>
@@ -96,14 +98,14 @@ echo "</pre>";
       </form>
     </div>
   </div>
-
+  <!-- Select vacio para llenar con Jquery. -->
   <div class="row mx-5 mt-3 justify-content-center">
     <div class="col-6">
       <select class="form-select" id="post" aria-label="Default select example">
       </select>
     </div>
   </div>
-
+  <!-- Select con las opciones concatenadas directamente desde la Petición cURL PHP. -->
   <div class="row mx-5 mt-3 justify-content-center">
     <div class="col-6">
       <select class="form-select" id="post-2" aria-label="Default select example">

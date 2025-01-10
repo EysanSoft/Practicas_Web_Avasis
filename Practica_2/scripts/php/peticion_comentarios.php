@@ -1,4 +1,5 @@
 <?php
+// Variable obtenida por el POST de ajax.
 $indexID = $_POST['postID'];	
 $url = "https://jsonplaceholder.typicode.com/posts/". $indexID ."/comments";
 $ch = curl_init($url);

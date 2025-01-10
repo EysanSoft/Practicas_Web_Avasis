@@ -18,7 +18,7 @@ $(document).ready(function () {
             `<td>${element.lastName}</td>` +
             `<td>${element.phone}</td>` +
             `<td>${element.email}</td>` +
-            `<td><button class="btn btn-primary btnEditar" id="${element.userId}" onClick="abrirModalEditarUsuario(${element.userId})">Editar</button><button class="btn btn-danger" id="${element.userId}" onClick="abrirModalEliminarUsuario(${element.userId})">Eliminar</button></td>` +
+            `<td><button class="btn btn-primary" id="${element.userId}" onClick="abrirModalEditarUsuario(${element.userId})">Editar</button><button class="btn btn-danger" id="${element.userId}" onClick="abrirModalEliminarUsuario(${element.userId})">Eliminar</button></td>` +
             `</tr>`
         );
       });
@@ -27,13 +27,6 @@ $(document).ready(function () {
       console.error("Error:", error);
     },
   });
-
-  /*
-  $("#tablaUsuarios").on("click",".btnEditar", function () {
-    let id = $(this).attr("id");
-    alert("click: " + id);
-  });
-  */
 
   // Responder al submit del formulario editar usuarios con un ajax POST.
   $("#editarUsuariosForm").submit(function (e) {
@@ -67,10 +60,9 @@ $(document).ready(function () {
   // Responder al submit del formulario editar la contraseña con un ajax POST.
   $("#editarContraForm").submit(function (e) {
     e.preventDefault();
-    // Si es necesario la id, buscar la forma de incluirlo en el formulario.
+    // Falta el endpoint para probar el metodo...
     let datos = new FormData(this);
     let urlForm = $(this).attr("action");
-    // Posiblemente se tenga que hacer dos peticiones.
     $.ajax({
       url: urlForm,
       type: "POST",
@@ -182,6 +174,7 @@ function abrirModalEliminarUsuario(postID) {
 // Función que realizar la peticion ajax POST para eliminar un usuario.
 function peticionEliminarUsuario(userID) {
   jQuery.ajax({
+    // Falta el endpoint para probar el metodo...
     url: "../scripts/php/peticion_eliminar_usuario_por_id.php",
     type: "POST",
     dataType: "JSON",

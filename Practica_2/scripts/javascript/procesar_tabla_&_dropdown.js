@@ -1,16 +1,17 @@
 $(document).ready(function () {
   /*
-  let defaultID = 1;
-  ajaxTabla(defaultID);
+  Obtiene el valor del componente cuando se interactua con el dropdown.
+  Dicho valor se pasa como variable a la funcion ajax.
   */
   $("#dropdownIndexTable").on("change", function () {
     let id = $(this).val();
     ajaxTabla(id);
-    // alert(id);
   });
 });
 
+// Petición ajax POST para obtener los comentarios en la tabla segun el id.
 function ajaxTabla(postID) {
+  // Limpia la tabla antes de la nueva petición.
   $("#miTabla").empty();
   jQuery.ajax({
     url: "scripts/php/peticion_comentarios.php",
@@ -20,16 +21,14 @@ function ajaxTabla(postID) {
       postID: postID,
     },
     success: function (result) {
-      // let datos = JSON.parse(result);
-      // console.log(result[0].name);
       result.forEach((element) => {
         $("#miTabla").append(
           `<tr>` +
-            `<th scope'row'>"${element.id}"</th>` +
-            `<td>"${element.name}"</td>` +
-            `<td>"${element.email}"</td>` +
-            `<td>"${element.body}"</td>` +
-            `</tr>`
+          `<th scope'row'>"${element.id}"</th>` +
+          `<td>"${element.name}"</td>` +
+          `<td>"${element.email}"</td>` +
+          `<td>"${element.body}"</td>` +
+          `</tr>`
         );
       });
     },

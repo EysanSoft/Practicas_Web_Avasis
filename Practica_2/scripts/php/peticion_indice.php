@@ -2,6 +2,7 @@
 $url = "https://jsonplaceholder.typicode.com/posts";
 $ch = curl_init($url);
 
+// Operaciones basicas para un cURL GET.
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);

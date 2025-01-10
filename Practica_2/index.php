@@ -87,6 +87,10 @@ include 'scripts/php/peticion_indice.php';
       <select id="dropdownIndexTable" name="dropdownIndexTable" class="form-select" aria-label="Elige una opción">
         <option value="1" selected disabled hidden>Elige una opción</option>
         <?php
+        /*
+        Segun lo obtenido en la petición directa cURL GET,
+        se concatena los resultados en el select con un foreach.
+        */
         foreach ($posts as $post) {
           echo "<option value=" . $post['id'] . ">" . $post['title'] . "</option>";
         }
@@ -94,7 +98,7 @@ include 'scripts/php/peticion_indice.php';
       </select>
     </div>
   </div>
-  <!-- Tablas. -->
+  <!-- Tabla -->
   <div class="row mt-5 justify-content-center">
     <div class="col-10">
       <div class="table-responsive">

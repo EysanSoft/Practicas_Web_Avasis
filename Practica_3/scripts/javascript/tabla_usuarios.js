@@ -62,7 +62,10 @@ $(document).ready(function () {
     e.preventDefault();
     // Falta el endpoint para probar el metodo...
     let datos = new FormData(this);
+    // adjuntar la ID a datos.
     let urlForm = $(this).attr("action");
+    console.log(datos, urlForm);
+    /*
     $.ajax({
       url: urlForm,
       type: "POST",
@@ -85,6 +88,7 @@ $(document).ready(function () {
         alert("An error occurred: " + error);
       },
     });
+    */
   });
 
   // Sucio hack para simular el funcionamiento de tabs en una modal.
@@ -174,7 +178,6 @@ function abrirModalEliminarUsuario(postID) {
 // Función que realizar la peticion ajax POST para eliminar un usuario.
 function peticionEliminarUsuario(userID) {
   jQuery.ajax({
-    // Falta el endpoint para probar el metodo...
     url: "../scripts/php/peticion_eliminar_usuario_por_id.php",
     type: "POST",
     dataType: "JSON",

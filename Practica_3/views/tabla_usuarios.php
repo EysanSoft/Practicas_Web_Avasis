@@ -153,10 +153,10 @@
                                 </li>
                             </ul>
                             <form action="../scripts/php/peticion_editar_contra.php" class="form" id="editarContraForm" method="POST">
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="contraOG" class="form-label">Contraseña Actual</label>
                                     <input type="password" class="form-control" id="contraOG" name="contraOG" required/>
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <label for="contra" class="form-label">Contraseña Nueva</label>
                                     <input type="password" class="form-control" id="contra" name="contra" required/>
@@ -168,9 +168,9 @@
                                 <div class="alert alert-danger" id="mensajeConNoCoin" role="alert">
                                     ¡La contraseñas ingresadas no coinciden! Vuelva a intentarlo.
                                 </div>
-                                <div class="alert alert-danger" id="mensajeConInco" role="alert">
+                                <!-- <div class="alert alert-danger" id="mensajeConInco" role="alert">
                                     ¡La contraseña ingresada es incorrecta! Vuelva a intentarlo.
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <button class="btn btn-primary" id="submit">Cambiar de Contraseña</button>
                                 </div>

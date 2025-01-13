@@ -58,37 +58,47 @@ $(document).ready(function () {
   });
 
   // Responder al submit del formulario editar la contraseña con un ajax POST.
+  /*
+    Falta una validación de la contraseña actual,
+    pero no se cuenta con ese endpoint por el momento...
+  */
   $("#editarContraForm").submit(function (e) {
-    e.preventDefault();
-    // Falta el endpoint para probar el metodo...
-    let datos = new FormData(this);
-    // adjuntar la ID a datos.
-    let urlForm = $(this).attr("action");
-    console.log(datos, urlForm);
-    /*
-    $.ajax({
-      url: urlForm,
-      type: "POST",
-      data: datos,
-      dataType: "json",
-      processData: false,
-      contentType: false,
-      success: function (response) {
-        if (response.status == true) {
-          alert(response.message);
-          $("#modalEditarUsuario").modal("hide");
-          location.reload();
-        } 
-        else {
-          // Error del servidor...
-          alert(response.message);
-        }
-      },
-      error: function (error) {
-        alert("An error occurred: " + error);
-      },
-    });
-    */
+    let contra_1 = $("#contra").val();
+    let contra_2 = $("#conContra").val();
+    if (contra_1 == contra_2) {
+      e.preventDefault();
+      let datos = new FormData(this);
+      // adjuntar la ID a datos.
+      let idUser = $(".inputOcultoID").val();
+      datos.append("idUser", idUser);
+      let urlForm = $(this).attr("action");
+      $.ajax({
+        url: urlForm,
+        type: "POST",
+        data: datos,
+        dataType: "json",
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          if (response.status == true) {
+            alert(response.message);
+            $("#modalEditarUsuario").modal("hide");
+            location.reload();
+          } 
+          else {
+            // Error del servidor...
+            alert(response.message);
+          }
+        },
+        error: function (error) {
+          alert("An error occurred: " + error);
+        },
+      });
+    }
+    else {
+      $("#mensajeConNoCoin").show();
+      return false;
+    }
   });
 
   // Sucio hack para simular el funcionamiento de tabs en una modal.
@@ -108,7 +118,7 @@ $(document).ready(function () {
 function abrirModalEditarUsuario(postID) {
   //  Ocultar los elementos dinamicos...
   $("#mensajeConNoCoin").hide();
-  $("#mensajeConInco").hide();
+  // $("#mensajeConInco").hide();
   $("#contenedorDinamico2").hide();
 
   /*
@@ -130,7 +140,7 @@ function abrirModalEditarUsuario(postID) {
       data.forEach((element) => {
         $("#editarUsuariosForm").append(
           `<div class="d.none">` +
-            `<input type="hidden" class="form-control" id="id" name="id" value="${element.userId}"/>` +
+            `<input type="hidden" class="form-control inputOcultoID" id="id" name="id" value="${element.userId}"/>` +
             `</div>` +
             `<div class="mb-3">` +
             `<label for="nombre" class="form-label">Nombre</label>` +

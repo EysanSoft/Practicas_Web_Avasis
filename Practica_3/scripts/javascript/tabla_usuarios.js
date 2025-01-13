@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $('.dropify').dropify();
   // Eliminar el mensaje "Sin datos." en la tabla.
   $("#tablaUsuarios").empty();
 
@@ -69,7 +70,7 @@ $(document).ready(function () {
       e.preventDefault();
       let datos = new FormData(this);
       // adjuntar la ID a datos.
-      let idUser = $(".inputOcultoID").val();
+      let idUser = $("#hiddenIdUser").val();
       datos.append("idUser", idUser);
       let urlForm = $(this).attr("action");
       $.ajax({
@@ -102,13 +103,20 @@ $(document).ready(function () {
   });
 
   // Sucio hack para simular el funcionamiento de tabs en una modal.
-  $("#tabCambiarContra").on("click", function () {
-    $("#contenedorDinamico1").hide();
-    $("#contenedorDinamico2").show();
-  });
   $("#tabCambiarUsuario").on("click", function () {
     $("#contenedorDinamico1").show();
     $("#contenedorDinamico2").hide();
+    $("#contenedorDinamico3").hide();
+  });
+  $("#tabCambiarContra").on("click", function () {
+    $("#contenedorDinamico1").hide();
+    $("#contenedorDinamico2").show();
+    $("#contenedorDinamico3").hide();
+  });
+  $("#tabCambiarFotoDePerfil").on("click", function () {
+    $("#contenedorDinamico1").hide();
+    $("#contenedorDinamico2").hide();
+    $("#contenedorDinamico3").show();
   });
 });
 /*
@@ -118,8 +126,8 @@ $(document).ready(function () {
 function abrirModalEditarUsuario(postID) {
   //  Ocultar los elementos dinamicos...
   $("#mensajeConNoCoin").hide();
-  // $("#mensajeConInco").hide();
   $("#contenedorDinamico2").hide();
+  $("#contenedorDinamico3").hide();
 
   /*
     Vacia el contenido del formulario cada vez que la función es llamado,
@@ -127,7 +135,6 @@ function abrirModalEditarUsuario(postID) {
   */
   $("#editarUsuariosForm").empty();
   jQuery.ajax({
-    // Mejorar...
     url: "../scripts/php/peticion_usuario_por_id.php",
     type: "POST",
     dataType: "JSON",
@@ -136,11 +143,11 @@ function abrirModalEditarUsuario(postID) {
     },
     success: function (result) {
       let data = result.data;
-      console.log(data);
+      // console.log(data);
       data.forEach((element) => {
         $("#editarUsuariosForm").append(
           `<div class="d.none">` +
-            `<input type="hidden" class="form-control inputOcultoID" id="id" name="id" value="${element.userId}"/>` +
+            `<input type="hidden" class="form-control" id="hiddenIdUser" name="hiddenIdUser" value="${element.userId}"/>` +
             `</div>` +
             `<div class="mb-3">` +
             `<label for="nombre" class="form-label">Nombre</label>` +
@@ -176,7 +183,7 @@ Función para abrir la modal de eliminar usuarios,
 y cargar el boton de eliminar con su ID correspondiente,
 vaciando el contenido del footer de la modal anterior.
 */
-function abrirModalEliminarUsuario(postID) {
+function abrirModalEliminarUsuario(postID) { 
   $("#modalEliminarUsuarioFooter").empty();
   $("#modalEliminarUsuarioFooter").append(
     `<button type="button" class="btn btn-danger id="${postID}" onClick="peticionEliminarUsuario(${postID})">Sí</button>` +

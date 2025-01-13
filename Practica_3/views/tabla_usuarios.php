@@ -10,6 +10,8 @@
         rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous" />
+    <link href="../../node_modules/dropify/dist/css/dropify.css" rel="stylesheet">
+    <link href="../../node_modules/dropify/dist/fonts/*" rel="stylesheet">
 </head>
 
 <body>
@@ -126,7 +128,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
                     <div class="row mx-3 mt-2 justify-content-center">
 
                         <div class="col-12" id="contenedorDinamico1">
@@ -136,6 +137,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="tabCambiarContra">Cambiar Contraseña</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tabCambiarFotoDePerfil">Cambiar Foto de Perfil</a>
                                 </li>
                             </ul>
                             <form action="../scripts/php/peticion_editar_usuarios.php" class="form" id="editarUsuariosForm" method="POST">
@@ -149,7 +153,10 @@
                                     <a class="nav-link" id="tabCambiarUsuario">Datos de Usuario</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" earia-current="pag">Cambiar Contraseña</a>
+                                    <a class="nav-link active" aria-current="page">Cambiar Contraseña</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tabCambiarFotoDePerfil">Cambiar Foto de Perfil</a>
                                 </li>
                             </ul>
                             <form action="../scripts/php/peticion_editar_contra.php" class="form" id="editarContraForm" method="POST">
@@ -173,6 +180,29 @@
                                 </div> -->
                                 <div class="mb-3">
                                     <button class="btn btn-primary" id="submit">Cambiar de Contraseña</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-12" id="contenedorDinamico3">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tabCambiarUsuario">Datos de Usuario</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tabCambiarContra">Cambiar Contraseña</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page">Cambiar Foto de Perfil</a>
+                                </li>
+                            </ul>
+                            <form action="../scripts/php/peticion_editar_foto_perfil.php" class="form" id="editarFotoPerfilForm" method="POST">
+                                <div class="mb-3">
+                                    <label for="fotoDePerfil" class="form-label">Arrastra una imagen a querer usar como foto de perfil</label>
+                                    <input type="file" class="dropify" data-default-file="url_of_your_file" />
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-primary" id="submit">Cambiar Foto de Perfil</button>
                                 </div>
                             </form>
                         </div>
@@ -211,8 +241,10 @@
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
     <script src="../../libs/jquery-3.7.1.min.js"></script>
+    <script>src="../../node_modules/dropify/dist/js/dropify.js"</script>
     <script src="../scripts/javascript/tabla_usuarios.js"></script>
 </body>
 

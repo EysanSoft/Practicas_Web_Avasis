@@ -1,5 +1,5 @@
 <?php
-$id = $_POST["id"];
+$id = $_POST["hiddenIdUser"];
 $name = $_POST["nombre"];
 $lastName = $_POST["apellido"];
 $phone = $_POST["telefono"];

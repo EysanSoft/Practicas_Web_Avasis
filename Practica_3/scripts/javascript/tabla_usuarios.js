@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $('.dropify').dropify();
+  // $('.dropify').dropify();
   // Eliminar el mensaje "Sin datos." en la tabla.
   $("#tablaUsuarios").empty();
 
@@ -102,6 +102,43 @@ $(document).ready(function () {
     }
   });
 
+  // Responder al submit del formulario editar el foto de perfil con un ajax POST.
+  $("#editarFotoPerfilForm").submit(function (e) {
+    e.preventDefault();
+    let idUser = $("#hiddenIdUser").val();
+    let datos = new FormData(this);
+    datos.append("idUser", idUser);
+    try {
+      console.log(datos);
+      let urlForm = $(this).attr("action");
+      
+      $.ajax({
+        url: urlForm,
+        type: "POST",
+        data: datos,
+        dataType: "json",
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          if (response.status == true) {
+            alert(response.message);
+            $("#modalEditarUsuario").modal("hide");
+            location.reload();
+          } 
+          else {
+            // Error del servidor...
+            alert(response.message);
+          }
+        },
+        error: function (error) {
+          alert("An error occurred: " + error);
+        },
+      });
+    } catch (error) {
+      alert("Ninguna imagen seleccionada.");
+    }
+  });
+
   // Sucio hack para simular el funcionamiento de tabs en una modal.
   $("#tabCambiarUsuario").on("click", function () {
     $("#contenedorDinamico1").show();
@@ -126,6 +163,7 @@ $(document).ready(function () {
 function abrirModalEditarUsuario(postID) {
   //  Ocultar los elementos dinamicos...
   $("#mensajeConNoCoin").hide();
+  $("#contenedorDinamico1").show();
   $("#contenedorDinamico2").hide();
   $("#contenedorDinamico3").hide();
 

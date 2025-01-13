@@ -10,8 +10,8 @@
         rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous" />
-    <link href="../../node_modules/dropify/dist/css/dropify.css" rel="stylesheet">
-    <link href="../../node_modules/dropify/dist/fonts/*" rel="stylesheet">
+    <!-- <link href="../../node_modules/dropify/dist/css/dropify.css" rel="stylesheet">
+    <link href="../../node_modules/dropify/dist/fonts/*" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -197,9 +197,14 @@
                                 </li>
                             </ul>
                             <form action="../scripts/php/peticion_editar_foto_perfil.php" class="form" id="editarFotoPerfilForm" method="POST">
+                                <div class="row my-3 justify-content-center">
+                                    <div class="col-5">
+                                        <img src="../images/foto_de_perfil.png" class="img-fluid" alt="Foto de perfil actual.">
+                                    </div>
+                                </div>
                                 <div class="mb-3">
-                                    <label for="fotoDePerfil" class="form-label">Arrastra una imagen a querer usar como foto de perfil</label>
-                                    <input type="file" class="dropify" data-default-file="url_of_your_file" />
+                                    <!-- <label for="fotoDePerfil" class="form-label">Imagen</label> -->
+                                    <input type="file" class="form-control" id="fotoDePerfil" name="fotoDePerfil" accept=".jpg, .jpeg, .png" required/>
                                 </div>
                                 <div class="mb-3">
                                     <button class="btn btn-primary" id="submit">Cambiar Foto de Perfil</button>
@@ -244,7 +249,7 @@
         crossorigin="anonymous">
     </script>
     <script src="../../libs/jquery-3.7.1.min.js"></script>
-    <script>src="../../node_modules/dropify/dist/js/dropify.js"</script>
+    <!-- <script>src="../../node_modules/dropify/dist/js/dropify.js"</script> -->
     <script src="../scripts/javascript/tabla_usuarios.js"></script>
 </body>
 

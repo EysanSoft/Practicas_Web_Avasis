@@ -199,7 +199,7 @@
                             <form action="../scripts/php/peticion_editar_foto_perfil.php" class="form" id="editarFotoPerfilForm" method="POST">
                                 <div class="row my-3 justify-content-center">
                                     <div class="col-5">
-                                        <img src="../images/foto_de_perfil.png" class="img-fluid" alt="Foto de perfil actual.">
+                                        <img src="../images/foto_de_perfil.png" class="img-fluid" alt="Sin foto de perfil.">
                                     </div>
                                 </div>
                                 <div class="mb-3">

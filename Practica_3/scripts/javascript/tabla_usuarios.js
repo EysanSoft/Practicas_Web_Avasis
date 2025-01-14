@@ -109,9 +109,7 @@ $(document).ready(function () {
     let datos = new FormData(this);
     datos.append("idUser", idUser);
     try {
-      console.log(datos);
       let urlForm = $(this).attr("action");
-      
       $.ajax({
         url: urlForm,
         type: "POST",
@@ -134,7 +132,8 @@ $(document).ready(function () {
           alert("An error occurred: " + error);
         },
       });
-    } catch (error) {
+    } 
+    catch (error) {
       alert("Ninguna imagen seleccionada.");
     }
   });

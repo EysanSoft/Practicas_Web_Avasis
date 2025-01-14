@@ -1,4 +1,5 @@
 <?php
+include "correo.php";
 $id = $_POST["hiddenIdUser"];
 $name = $_POST["nombre"];
 $lastName = $_POST["apellido"];

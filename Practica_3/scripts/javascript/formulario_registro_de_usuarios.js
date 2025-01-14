@@ -15,7 +15,11 @@ $(document).ready(function () {
         dataType: "json",
         processData: false,
         contentType: false,
+        beforeSend: function() {
+          $("#submit").prop("disabled", true);
+        },
         success: function (response) {
+          $("#submit").prop("disabled", false);
           if (response.status == true) {
             $("#modalAlert").modal("show");
           } 

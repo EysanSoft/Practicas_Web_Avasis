@@ -1,4 +1,5 @@
 <?php
+include "correo.php";
 $name = $_POST["nombre"];
 $lastName = $_POST["apellido"];
 $phone = $_POST["telefono"];
@@ -39,7 +40,9 @@ if(empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim(
         }
         else {
             $status = true;
-            $response = ["status" => $status, "message" => "Usuario registrado correctamente"];
+            $correo = new Correo();
+            $res = $correo->enviarCorreo($email, 'Registro de Usuario', 'Te has registrado correctamente en nuestra plataforma.');
+            $response = ["status" => $status, "message" => $res];
             echo json_encode($response);
         }
         curl_close($ch);

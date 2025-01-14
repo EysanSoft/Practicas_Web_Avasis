@@ -54,8 +54,9 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
             $cuerpoCorreo,
             'Tus datos fueron actualizados correctamente, veras los cambios reflejados en unos 5 minutos.'
         );
-        // Problema logico...
-        if(isset($response -> errors[0])) {
+        $response = json_decode($response);
+        if(isset($response->Errors->Email[0])) {
+            $newResponse = ["status" => $status, "message" => $response->Errors->Email[0]];
             echo json_encode($response);
         }
         else {

@@ -50,9 +50,10 @@ $(document).ready(function () {
           alert(response.message);
           $("#modalEditarUsuario").modal("hide");
           location.reload();
-        } else {
-          // Error del servidor...
-          alert(response.errors[0]);
+        } 
+        else {
+          // Error de la API.
+          alert(response.message);
         }
       },
       error: function (error) {

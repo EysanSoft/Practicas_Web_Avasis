@@ -84,7 +84,7 @@
         </div>
     </nav>
     <!-- Tabla Usuarios. -->
-    <div class="row mt-5 justify-content-center">
+    <div class="row my-5 justify-content-center">
         <div class="col-10">
             <div class="table-responsive">
                 <table class="table table-primary table-striped table-bordered table-hover">
@@ -105,6 +105,24 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+    <!-- Formulario para correo. -->
+    <div class="row mb-5 justify-content-center">
+        <div class="col-4">
+            <form action="../scripts/php/correo.php" class="form" id="correoForm" method="POST">
+                <div class="mb-3">
+                    <label for="asuntoCorreo" class="form-label">Asunto</label>
+                    <input type="text" class="form-control" id="asuntoCorreo" name="asuntoCorreo" required/>
+                </div>
+                <div class="mb-3">
+                    <label for="cuerpoCorreo" class="form-label">Cuerpo</label>
+                    <textarea class="form-control" id="cuerpoCorreo" name="cuerpoCorreo" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-secondary" id="submit">Mandar un correo</button>
+                </div>
+            </form>
         </div>
     </div>
     <!-- Modal Editar Usuario. -->
@@ -166,11 +184,11 @@
                                 </div> -->
                                 <div class="mb-3">
                                     <label for="contra" class="form-label">Contraseña Nueva</label>
-                                    <input type="password" class="form-control" id="contra" name="contra" required/>
+                                    <input type="password" class="form-control" id="contra" name="contra" required />
                                 </div>
                                 <div class="mb-3">
                                     <label for="conContra" class="form-label">Confirmar Contraseña Nueva</label>
-                                    <input type="password" class="form-control" id="conContra" name="conContra" required/>
+                                    <input type="password" class="form-control" id="conContra" name="conContra" required />
                                 </div>
                                 <div class="alert alert-danger" id="mensajeConNoCoin" role="alert">
                                     ¡La contraseñas ingresadas no coinciden! Vuelva a intentarlo.
@@ -202,7 +220,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="file" class="form-control" id="fotoDePerfil" name="fotoDePerfil" accept=".jpg, .jpeg, .png" required/>
+                                    <input type="file" class="form-control" id="fotoDePerfil" name="fotoDePerfil" accept=".jpg, .jpeg, .png" required />
                                 </div>
                                 <div class="mb-3">
                                     <button class="btn btn-primary" id="submit">Cambiar Foto de Perfil</button>
@@ -247,7 +265,6 @@
         crossorigin="anonymous">
     </script>
     <script src="../../libs/jquery-3.7.1.min.js"></script>
-    <!-- <script>src="../../node_modules/dropify/dist/js/dropify.js"</script> -->
     <script src="../scripts/javascript/tabla_usuarios.js"></script>
 </body>
 

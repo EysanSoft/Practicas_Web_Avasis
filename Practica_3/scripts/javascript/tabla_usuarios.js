@@ -46,8 +46,7 @@ $(document).ready(function () {
           alert(response.message);
           $("#modalEditarUsuario").modal("hide");
           location.reload();
-        } 
-        else {
+        } else {
           // Error del servidor...
           alert(response.message);
         }
@@ -59,10 +58,6 @@ $(document).ready(function () {
   });
 
   // Responder al submit del formulario editar la contraseña con un ajax POST.
-  /*
-    Falta una validación de la contraseña actual,
-    pero no se cuenta con ese endpoint por el momento...
-  */
   $("#editarContraForm").submit(function (e) {
     let contra_1 = $("#contra").val();
     let contra_2 = $("#conContra").val();
@@ -85,8 +80,7 @@ $(document).ready(function () {
             alert(response.message);
             $("#modalEditarUsuario").modal("hide");
             location.reload();
-          } 
-          else {
+          } else {
             // Error del servidor...
             alert(response.message);
           }
@@ -95,8 +89,7 @@ $(document).ready(function () {
           alert("An error occurred: " + error);
         },
       });
-    }
-    else {
+    } else {
       $("#mensajeConNoCoin").show();
       return false;
     }
@@ -126,8 +119,7 @@ $(document).ready(function () {
             alert(response.message);
             $("#modalEditarUsuario").modal("hide");
             location.reload();
-          } 
-          else {
+          } else {
             // Error del servidor...
             alert(response.message);
           }
@@ -136,10 +128,36 @@ $(document).ready(function () {
           alert("An error occurred: " + error);
         },
       });
-    } 
-    catch (error) {
+    } catch (error) {
       alert("Ninguna imagen seleccionada.");
     }
+  });
+
+  // Responder al submit del formulario correo con un ajax POST.
+  $("#correoForm").submit(function (e) {
+    e.preventDefault();
+    let datos = new FormData(this);
+    let urlForm = $(this).attr("action");
+    $.ajax({
+      url: urlForm,
+      type: "POST",
+      data: datos,
+      dataType: "json",
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        if (response.status == true) {
+          alert(response.message);
+          location.reload();
+        }
+        else {
+          alert(response.message);
+        }
+      },
+      error: function (error) {
+        alert("An error occurred: " + error);
+      },
+    });
   });
 
   // Sucio hack para simular el funcionamiento de tabs en una modal.
@@ -156,14 +174,13 @@ $(document).ready(function () {
   $("#tabCambiarFotoDePerfil").on("click", function () {
     $("#contenedorImagenFotoDePerfil").empty();
 
-    if($("#hiddenUserImage").val() != null) {
+    if ($("#hiddenUserImage").val() != null) {
       let fotoDePerfil = $("#hiddenUserImage").val();
       console.log(fotoDePerfil);
       $("#contenedorImagenFotoDePerfil").append(
         `<img src="../../resources/images/${fotoDePerfil}" class="img-fluid" alt="Sin foto de perfil."></img>`
       );
-    }
-    else {
+    } else {
       $("#contenedorImagenFotoDePerfil").append(
         `<img src="" class="img-fluid" alt="Sin foto de perfil."></img>`
       );
@@ -203,28 +220,28 @@ function abrirModalEditarUsuario(postID) {
       data.forEach((element) => {
         $("#editarUsuariosForm").append(
           `<div class="d.none">` +
-          `<input type="hidden" class="form-control" id="hiddenIdUser" name="hiddenIdUser" value="${element.userId}"/>` +
-          `<input type="hidden" class="form-control" id="hiddenUserImage" name="hiddenUserImage" value="${element.image}"/>` +
-          `</div>` +
-          `<div class="mb-3">` +
-          `<label for="nombre" class="form-label">Nombre</label>` +
-          `<input type="text" class="form-control" id="nombre" name="nombre" maxlength="15" value="${element.name}"/>` +
-          `</div>` +
-          `<div class="mb-3">` +
-          `<label for="apellido" class="form-label">Apellido</label>` +
-          `<input type="text" class="form-control" id="apellido" name="apellido" maxlength="30" value="${element.lastName}"/>` +
-          `</div>` +
-          `<div class="mb-3">` +
-          `<label for="correo" class="form-label">Correo</label>` +
-          `<input type="email" class="form-control" id="correo" name="correo" value="${element.email}"/>` +
-          `</div>` +
-          `<div class="mb-3">` +
-          `<label for="telefono" class="form-label">Telefono</label>` +
-          `<input type="tel" class="form-control" id="telefono" name="telefono" value="${element.phone}"/>` +
-          `</div>` +
-          `<div class="mb-3">` +
-          `<button class="btn btn-primary" id="submit">Guardar Cambios</button>` +
-          `</div>`
+            `<input type="hidden" class="form-control" id="hiddenIdUser" name="hiddenIdUser" value="${element.userId}"/>` +
+            `<input type="hidden" class="form-control" id="hiddenUserImage" name="hiddenUserImage" value="${element.image}"/>` +
+            `</div>` +
+            `<div class="mb-3">` +
+            `<label for="nombre" class="form-label">Nombre</label>` +
+            `<input type="text" class="form-control" id="nombre" name="nombre" maxlength="15" value="${element.name}"/>` +
+            `</div>` +
+            `<div class="mb-3">` +
+            `<label for="apellido" class="form-label">Apellido</label>` +
+            `<input type="text" class="form-control" id="apellido" name="apellido" maxlength="30" value="${element.lastName}"/>` +
+            `</div>` +
+            `<div class="mb-3">` +
+            `<label for="correo" class="form-label">Correo</label>` +
+            `<input type="email" class="form-control" id="correo" name="correo" value="${element.email}"/>` +
+            `</div>` +
+            `<div class="mb-3">` +
+            `<label for="telefono" class="form-label">Telefono</label>` +
+            `<input type="tel" class="form-control" id="telefono" name="telefono" value="${element.phone}"/>` +
+            `</div>` +
+            `<div class="mb-3">` +
+            `<button class="btn btn-primary" id="submit">Guardar Cambios</button>` +
+            `</div>`
         );
         $("#modalEditarUsuario").modal("show");
       });
@@ -240,11 +257,11 @@ Función para abrir la modal de eliminar usuarios,
 y cargar el boton de eliminar con su ID correspondiente,
 vaciando el contenido del footer de la modal anterior.
 */
-function abrirModalEliminarUsuario(postID) { 
+function abrirModalEliminarUsuario(postID) {
   $("#modalEliminarUsuarioFooter").empty();
   $("#modalEliminarUsuarioFooter").append(
     `<button type="button" class="btn btn-danger id="${postID}" onClick="peticionEliminarUsuario(${postID})">Sí</button>` +
-    `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>`
+      `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>`
   );
   $("#modalEliminarUsuario").modal("show");
 }
@@ -263,8 +280,7 @@ function peticionEliminarUsuario(userID) {
         alert(response.message);
         $("#modalEliminarUsuario").modal("hide");
         location.reload();
-      } 
-      else {
+      } else {
         // Error del servidor...
         alert(response.message);
       }

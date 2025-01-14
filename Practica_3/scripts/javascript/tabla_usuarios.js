@@ -41,14 +41,18 @@ $(document).ready(function () {
       dataType: "json",
       processData: false,
       contentType: false,
+      beforeSend: function() {
+        $("#submit").prop("disabled", true);
+      },
       success: function (response) {
+        $("#submit").prop("disabled", false);
         if (response.status == true) {
           alert(response.message);
           $("#modalEditarUsuario").modal("hide");
           location.reload();
         } else {
           // Error del servidor...
-          alert(response.message);
+          alert(response.errors[0]);
         }
       },
       error: function (error) {
@@ -131,33 +135,6 @@ $(document).ready(function () {
     } catch (error) {
       alert("Ninguna imagen seleccionada.");
     }
-  });
-
-  // Responder al submit del formulario correo con un ajax POST.
-  $("#correoForm").submit(function (e) {
-    e.preventDefault();
-    let datos = new FormData(this);
-    let urlForm = $(this).attr("action");
-    $.ajax({
-      url: urlForm,
-      type: "POST",
-      data: datos,
-      dataType: "json",
-      processData: false,
-      contentType: false,
-      success: function (response) {
-        if (response.status == true) {
-          alert(response.message);
-          location.reload();
-        }
-        else {
-          alert(response.message);
-        }
-      },
-      error: function (error) {
-        alert("An error occurred: " + error);
-      },
-    });
   });
 
   // Sucio hack para simular el funcionamiento de tabs en una modal.

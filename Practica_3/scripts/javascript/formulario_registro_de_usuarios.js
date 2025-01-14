@@ -24,7 +24,7 @@ $(document).ready(function () {
             $("#modalAlert").modal("show");
           } 
           else {
-            alert(response.message);
+            alert(response.errors);
           }
         },
         error: function (error) {

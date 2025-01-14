@@ -107,24 +107,6 @@
             </div>
         </div>
     </div>
-    <!-- Formulario para correo. -->
-    <div class="row mb-5 justify-content-center">
-        <div class="col-4">
-            <form action="../scripts/php/correo.php" class="form" id="correoForm" method="POST">
-                <div class="mb-3">
-                    <label for="asuntoCorreo" class="form-label">Asunto</label>
-                    <input type="text" class="form-control" id="asuntoCorreo" name="asuntoCorreo" required/>
-                </div>
-                <div class="mb-3">
-                    <label for="cuerpoCorreo" class="form-label">Cuerpo</label>
-                    <textarea class="form-control" id="cuerpoCorreo" name="cuerpoCorreo" rows="3" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <button class="btn btn-secondary" id="submit">Mandar un correo</button>
-                </div>
-            </form>
-        </div>
-    </div>
     <!-- Modal Editar Usuario. -->
     <div
         class="modal fade"

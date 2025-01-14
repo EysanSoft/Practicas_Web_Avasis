@@ -3,14 +3,14 @@ include "correo.php";
 $name = $_POST["nombre"];
 $lastName = $_POST["apellido"];
 $phone = $_POST["telefono"];
-$phone = strval( $phone );
+$phone = strval($phone);
 $email = $_POST["correo"];
 $password = $_POST["contra"];
 $password2 = $_POST["conContra"];
 $status = false;
 
-if(empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim($phone)) !== true && empty(trim($email)) !== true && empty(trim($password)) !== true && empty(trim($password2)) !== true) {
-    if($password != $password2) {
+if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim($phone)) !== true && empty(trim($email)) !== true && empty(trim($password)) !== true && empty(trim($password2)) !== true) {
+    if ($password != $password2) {
         echo json_encode($status);
         exit();
     }
@@ -37,13 +37,38 @@ if(empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim(
         $response = curl_exec($ch);
         if (curl_errno($ch)) {
             throw new Exception(curl_error($ch));
-        }
+            $response = ["status" => $status, "message" => "Ha ocurrido un error con el servidor, intentelo más tarde."];
+            echo json_encode($response);
+        } 
         else {
             $status = true;
             $correo = new Correo();
-            $res = $correo->enviarCorreo($email, 'Registro de Usuario', 'Te has registrado correctamente en nuestra plataforma.');
-            $response = ["status" => $status, "message" => $res];
-            echo json_encode($response);
+            $cuerpoCorreo = "
+                            <b>$name</b>, bienvenid@ a nuestra plataforma! <br>
+                            ¡Ahora podras tener acceso a todos nuestros servicios! <br>
+                            Si te suscribes a nuestra subscripción mensual, tendras acceso a: <br>
+                            <ol>
+                            <li>¡Descuentos Exclusivos!</li>
+                            <li>¡Servicio de Correo!</li>
+                            <li>¡Cambios de contraseñas ilimitadas!</li>
+                            </ol>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus natus nemo cupiditate vel nesciunt. <br>
+                            Maiores voluptates ex accusamus eius veniam.
+                            ";
+            $correo -> enviarCorreo(
+                $email,
+                'Registro de Usuario',
+                $cuerpoCorreo,
+                'Te has registrado correctamente a nuestra plataforma.'
+            );
+             // Problema logico...
+            if(isset($response -> errors)) {
+                echo json_encode($response);
+            }
+            else {
+                $response = ["status" => $status, "message" => "Has sido registrado, ¡bienvenido!"];
+                echo json_encode($response);
+            }
         }
         curl_close($ch);
     }
@@ -53,4 +78,3 @@ else {
     echo json_encode($response);
     exit();
 }
-?>

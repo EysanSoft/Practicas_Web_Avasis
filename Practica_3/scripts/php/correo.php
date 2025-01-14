@@ -1,41 +1,38 @@
 <?php
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
 require '../../../vendor/autoload.php';
-
-class Correo
-{
-    public function enviarCorreo($correo, $asunto, $cuerpo)
-    {
+class Correo {
+    public function enviarCorreo($correo, $asunto, $cuerpo, $cuerpoSinEstilos) {
         $mail = new PHPMailer(true);
 
         try {
-            //Server settings
-            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.hostinger.com';            //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'pruebas@avasis-ti.com';                //SMTP username
-            $mail->Password   = 'C24p*ER.235';                          //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption // PHPMailer::ENCRYPTION_SMTPS
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            // Configuraciones
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
+            $mail->isSMTP();                                            
+            $mail->Host       = 'smtp.hostinger.com';            
+            $mail->SMTPAuth   = true;                                  
+            $mail->Username   = 'pruebas@avasis-ti.com';               
+            $mail->Password   = 'C24p*ER.235';                         
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
+            $mail->Port       = 465;                                  
 
-            //Recipients
+            // Remitente
             $mail->setFrom('pruebas@avasis-ti.com', 'Correo Pruebas');
-            $mail->addAddress($correo);     //Add a recipient
+            // Destinatario
+            $mail->addAddress($correo);    
 
             //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->isHTML(true);                            
             $mail->Subject = $asunto;
             $mail->Body    = $cuerpo;
-            $mail->AltBody = $cuerpo;
+            $mail->AltBody = $cuerpoSinEstilos;
 
             $mail->send();
             return "Correo Enviado.";
-        } catch (Exception $e) {
+        }
+        catch (Exception $e) {
             return "Error al enviar el correo";
         }
     }

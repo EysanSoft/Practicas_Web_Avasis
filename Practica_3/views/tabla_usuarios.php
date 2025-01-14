@@ -198,12 +198,10 @@
                             </ul>
                             <form action="../scripts/php/peticion_editar_foto_perfil.php" class="form" id="editarFotoPerfilForm" method="POST">
                                 <div class="row my-3 justify-content-center">
-                                    <div class="col-5">
-                                        <img src="../images/foto_de_perfil.png" class="img-fluid" alt="Sin foto de perfil.">
+                                    <div class="col-5" id="contenedorImagenFotoDePerfil">
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <!-- <label for="fotoDePerfil" class="form-label">Imagen</label> -->
                                     <input type="file" class="form-control" id="fotoDePerfil" name="fotoDePerfil" accept=".jpg, .jpeg, .png" required/>
                                 </div>
                                 <div class="mb-3">

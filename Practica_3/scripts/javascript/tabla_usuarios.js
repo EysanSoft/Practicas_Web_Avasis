@@ -106,8 +106,12 @@ $(document).ready(function () {
   $("#editarFotoPerfilForm").submit(function (e) {
     e.preventDefault();
     let idUser = $("#hiddenIdUser").val();
+    let currentImageName = $("#hiddenUserImage").val();
     let datos = new FormData(this);
     datos.append("idUser", idUser);
+    if ($("#hiddenUserImage").val() != null) {
+      datos.append("imageName", currentImageName);
+    }
     try {
       let urlForm = $(this).attr("action");
       $.ajax({
@@ -150,6 +154,21 @@ $(document).ready(function () {
     $("#contenedorDinamico3").hide();
   });
   $("#tabCambiarFotoDePerfil").on("click", function () {
+    $("#contenedorImagenFotoDePerfil").empty();
+
+    if($("#hiddenUserImage").val() != null) {
+      let fotoDePerfil = $("#hiddenUserImage").val();
+      console.log(fotoDePerfil);
+      $("#contenedorImagenFotoDePerfil").append(
+        `<img src="../../resources/images/${fotoDePerfil}" class="img-fluid" alt="Sin foto de perfil."></img>`
+      );
+    }
+    else {
+      $("#contenedorImagenFotoDePerfil").append(
+        `<img src="" class="img-fluid" alt="Sin foto de perfil."></img>`
+      );
+    }
+
     $("#contenedorDinamico1").hide();
     $("#contenedorDinamico2").hide();
     $("#contenedorDinamico3").show();
@@ -180,31 +199,32 @@ function abrirModalEditarUsuario(postID) {
     },
     success: function (result) {
       let data = result.data;
-      // console.log(data);
+      console.log(data);
       data.forEach((element) => {
         $("#editarUsuariosForm").append(
           `<div class="d.none">` +
-            `<input type="hidden" class="form-control" id="hiddenIdUser" name="hiddenIdUser" value="${element.userId}"/>` +
-            `</div>` +
-            `<div class="mb-3">` +
-            `<label for="nombre" class="form-label">Nombre</label>` +
-            `<input type="text" class="form-control" id="nombre" name="nombre" maxlength="15" value="${element.name}"/>` +
-            `</div>` +
-            `<div class="mb-3">` +
-            `<label for="apellido" class="form-label">Apellido</label>` +
-            `<input type="text" class="form-control" id="apellido" name="apellido" maxlength="30" value="${element.lastName}"/>` +
-            `</div>` +
-            `<div class="mb-3">` +
-            `<label for="correo" class="form-label">Correo</label>` +
-            `<input type="email" class="form-control" id="correo" name="correo" value="${element.email}"/>` +
-            `</div>` +
-            `<div class="mb-3">` +
-            `<label for="telefono" class="form-label">Telefono</label>` +
-            `<input type="tel" class="form-control" id="telefono" name="telefono" value="${element.phone}"/>` +
-            `</div>` +
-            `<div class="mb-3">` +
-            `<button class="btn btn-primary" id="submit">Guardar Cambios</button>` +
-            `</div>`
+          `<input type="hidden" class="form-control" id="hiddenIdUser" name="hiddenIdUser" value="${element.userId}"/>` +
+          `<input type="hidden" class="form-control" id="hiddenUserImage" name="hiddenUserImage" value="${element.image}"/>` +
+          `</div>` +
+          `<div class="mb-3">` +
+          `<label for="nombre" class="form-label">Nombre</label>` +
+          `<input type="text" class="form-control" id="nombre" name="nombre" maxlength="15" value="${element.name}"/>` +
+          `</div>` +
+          `<div class="mb-3">` +
+          `<label for="apellido" class="form-label">Apellido</label>` +
+          `<input type="text" class="form-control" id="apellido" name="apellido" maxlength="30" value="${element.lastName}"/>` +
+          `</div>` +
+          `<div class="mb-3">` +
+          `<label for="correo" class="form-label">Correo</label>` +
+          `<input type="email" class="form-control" id="correo" name="correo" value="${element.email}"/>` +
+          `</div>` +
+          `<div class="mb-3">` +
+          `<label for="telefono" class="form-label">Telefono</label>` +
+          `<input type="tel" class="form-control" id="telefono" name="telefono" value="${element.phone}"/>` +
+          `</div>` +
+          `<div class="mb-3">` +
+          `<button class="btn btn-primary" id="submit">Guardar Cambios</button>` +
+          `</div>`
         );
         $("#modalEditarUsuario").modal("show");
       });

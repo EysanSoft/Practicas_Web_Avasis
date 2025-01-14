@@ -1,13 +1,17 @@
 <?php
 $status = false;
 $userId = $_POST["idUser"];
+$currentImageName = isset($_POST["imageName"]) ? $_POST["imageName"] : "";
 
 $nombreImagen = $_FILES["fotoDePerfil"]["name"];
 $tempImagen = $_FILES["fotoDePerfil"]["tmp_name"];
 
 $extImagen = $_FILES["fotoDePerfil"]["type"];
 $extension = explode("/", $extImagen);
-
+$currentImageRoute = "../../../resources/images/$currentImageName";
+if (strlen($currentImageName) > 0 && file_exists($currentImageRoute)) {
+    unlink($currentImageRoute);
+}
 // Valida que la extensión sea PNG, JPG o JPEG.
 if ($extension[1] == "png" || $extension[1] == "jpg" || $extension[1] == "jpeg") {
     $randomName = uniqid();

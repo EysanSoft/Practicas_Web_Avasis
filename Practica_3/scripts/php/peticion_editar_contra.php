@@ -1,5 +1,5 @@
 <?php
-include "../../endpoints.php";
+include "shared/endpoints.php";
 $userId = $_POST["idUser"];
 $newPassword = $_POST["contra"];
 $newPassword2 = $_POST["conContra"];
@@ -11,19 +11,10 @@ if(empty(trim($newPassword)) !== true && empty(trim($newPassword2)) !== true) {
             'userId' => $userId,
             'password' => $newPassword,
         );
-        $json_data = json_encode($data);
         $url = EndPoints::$apiUrl . EndPoints::$editarContra;
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");        
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($json_data)
-        ));
-        $response = curl_exec($ch);
+
+        include "shared/curl_opts/put_opt.php";
+        
         if (curl_errno($ch)) {
             throw new Exception(curl_error($ch));
             $response = ["status" => $status, "message" => "Ha ocurrido un error con el servidor, intentelo más tarde."];
@@ -34,6 +25,7 @@ if(empty(trim($newPassword)) !== true && empty(trim($newPassword2)) !== true) {
             $response = ["status" => $status, "message" => "Se actualizo la contraseña con exito!"];
             echo json_encode($response);
         }
+
         curl_close($ch);
     }
     else {

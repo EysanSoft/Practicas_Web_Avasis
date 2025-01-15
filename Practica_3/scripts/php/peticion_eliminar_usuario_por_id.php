@@ -1,18 +1,12 @@
 <?php
-include "../../endpoints.php";
+include "shared/endpoints.php";
 $id = $_POST["userID"];
 $status = false;
 // Directamente se puede concatenar la id para la peticion DELETE.
 $url = EndPoints::$apiUrl . EndPoints::$eliminarUsuario . $id;
 
-$ch = curl_init($url);
+include "shared/curl_opts/delete_opt.php";
 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-
-$response = curl_exec($ch);
 if (curl_errno($ch)) {
     throw new Exception(curl_error($ch));
     $response = ["status" => $status, "message" => "Ha ocurrido un error con el servidor, intentelo más tarde."];

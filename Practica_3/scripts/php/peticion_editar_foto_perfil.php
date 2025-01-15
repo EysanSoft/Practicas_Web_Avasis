@@ -1,5 +1,5 @@
 <?php
-include "../../endpoints.php";
+include "shared/endpoints.php";
 $status = false;
 $userId = $_POST["idUser"];
 $currentImageName = isset($_POST["imageName"]) ? $_POST["imageName"] : "";
@@ -26,24 +26,16 @@ if ($extension[1] == "png" || $extension[1] == "jpg" || $extension[1] == "jpeg")
                 'userId' => $userId,
                 'image' => $nombreImagen,
             );
-            $json_data = json_encode($data);
             $url = EndPoints::$apiUrl . EndPoints::$editarFotoPerfil;
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($json_data)
-            ));
-            $response = curl_exec($ch);
+        
+            include "shared/curl_opts/put_opt.php";
+        
             if (curl_errno($ch)) {
                 throw new Exception(curl_error($ch));
                 $response = ["status" => $status, "message" => "Ha ocurrido un error con el servidor, intentelo más tarde."];
                 echo json_encode($response);
-            } else {
+            } 
+            else {
                 $status = true;
                 $response = ["status" => $status, "message" => "¡Foto de perfil establecida!"];
                 echo json_encode($response);

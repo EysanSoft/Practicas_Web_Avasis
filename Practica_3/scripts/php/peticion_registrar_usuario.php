@@ -1,5 +1,5 @@
 <?php
-include "../../endpoints.php";
+include "shared/endpoints.php";
 include "correo.php";
 $name = $_POST["nombre"];
 $lastName = $_POST["apellido"];
@@ -23,20 +23,10 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
             'email' => $email,
             'password' => $password,
         );
-        $json_data = json_encode($data);
-        $url = 'https://pruebas.avasisservices.com/user/create';
         $url = EndPoints::$apiUrl . EndPoints::$registrarUsuario;
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($json_data)
-        ));
-        $response = curl_exec($ch);
+    
+        include "shared/curl_opts/post_opt.php";
+    
         if (curl_errno($ch)) {
             throw new Exception(curl_error($ch));
             $response = ["status" => $status, "message" => "Ha ocurrido un error con el servidor, intentelo más tarde."];

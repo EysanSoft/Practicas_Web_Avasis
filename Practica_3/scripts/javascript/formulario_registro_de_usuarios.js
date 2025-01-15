@@ -17,9 +17,18 @@ $(document).ready(function () {
         contentType: false,
         beforeSend: function() {
           $("#submit").prop("disabled", true);
+          $(".submitRegistrarUsuario").empty();
+          $(".submitRegistrarUsuario").append(`
+            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            <span role="status">Registrandote...</span>
+          `);
         },
         success: function (response) {
+          // Botón submit con spinner.
           $("#submit").prop("disabled", false);
+          $(".submitRegistrarUsuario").empty();
+          $(".submitRegistrarUsuario").append("Registrarte");
+          // Modal con mensaje.
           $("#contenidoModal").empty();
           $("#contenidoModal").append(`<p>${response.message}</p>`);
           $("#modalAlert").modal("show");

@@ -43,9 +43,16 @@ $(document).ready(function () {
       contentType: false,
       beforeSend: function() {
         $("#submit").prop("disabled", true);
+        $(".submitEditarUsuario").empty();
+        $(".submitEditarUsuario").append(`
+          <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+          <span role="status">Guardando tus Cambios...</span>
+        `);
       },
       success: function (response) {
         $("#submit").prop("disabled", false);
+        $(".submitEditarUsuario").empty();
+        $(".submitEditarUsuario").append("Guardar Cambios");
         if (response.status == true) {
           alert(response.message);
           $("#modalEditarUsuario").modal("hide");
@@ -218,7 +225,7 @@ function abrirModalEditarUsuario(postID) {
             `<input type="tel" class="form-control" id="telefono" name="telefono" value="${element.phone}"/>` +
             `</div>` +
             `<div class="mb-3">` +
-            `<button class="btn btn-primary" id="submit">Guardar Cambios</button>` +
+            `<button class="btn btn-primary submitEditarUsuario" id="submit">Guardar Cambios</button>` +
             `</div>`
         );
         $("#modalEditarUsuario").modal("show");

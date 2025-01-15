@@ -149,7 +149,7 @@
           ¡La contraseñas ingresadas no coinciden! Vuelva a intentarlo.
         </div>
         <div class="mb-3">
-          <button class="btn btn-primary" id="submit">Ingresar</button>
+          <button class="btn btn-primary submitRegistrarUsuario" id="submit">Registrarte</button>
         </div>
       </form>
     </div>

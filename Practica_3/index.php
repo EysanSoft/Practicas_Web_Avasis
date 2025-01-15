@@ -81,6 +81,7 @@
       </div>
     </div>
   </nav>
+  <!-- Formulario de registro. -->
   <div class="row mx-5 mt-5 justify-content-center">
     <div class="col-3">
       <form
@@ -150,18 +151,10 @@
         <div class="mb-3">
           <button class="btn btn-primary" id="submit">Ingresar</button>
         </div>
-        <!-- <div class="mb-3">
-            <button
-              type="button"
-              class="btn btn-danger text-white"
-              id="botonModal"
-            >
-              Mostrar Modal
-            </button>
-          </div> -->
       </form>
     </div>
   </div>
+  <!-- Modal con mensaje. -->
   <div
     class="modal fade"
     id="modalAlert"
@@ -174,18 +167,12 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"></button>
+          <p>Atención</p>
         </div>
-        <div class="modal-body">¡El formulario fue subido con exito!</div>
+        <div class="modal-body" id="contenidoModal">
+        </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal">
+          <button type="button" class="btn btn-secondary" id="botonCerrarModal" data-bs-dismiss="modal">
             Cerrar
           </button>
         </div>

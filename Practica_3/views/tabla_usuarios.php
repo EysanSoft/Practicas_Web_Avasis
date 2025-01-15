@@ -10,8 +10,6 @@
         rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous" />
-    <!-- <link href="../../node_modules/dropify/dist/css/dropify.css" rel="stylesheet">
-    <link href="../../node_modules/dropify/dist/fonts/*" rel="stylesheet"> -->
 </head>
 
 <body>

@@ -20,12 +20,15 @@ $(document).ready(function () {
         },
         success: function (response) {
           $("#submit").prop("disabled", false);
+          $("#contenidoModal").empty();
+          $("#contenidoModal").append(`<p>${response.message}</p>`);
+          $("#modalAlert").modal("show");
           if (response.status == true) {
-            $("#modalAlert").modal("show");
-          } 
-          else {
-            alert(response.errors);
+            $("#botonCerrarModal").attr("onClick", "location.reload()");
           }
+          else {
+            $("#botonCerrarModal").attr("onClick", "");
+          } 
         },
         error: function (error) {
           alert("An error occurred: " + error);
@@ -37,7 +40,4 @@ $(document).ready(function () {
       return false;
     }
   });
-  //   $("#botonModal").on("click", function () {
-  //     $("#modalAlert").modal("show");
-  //   });
 });

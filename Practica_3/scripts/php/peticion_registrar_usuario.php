@@ -39,7 +39,7 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
             throw new Exception(curl_error($ch));
             $response = ["status" => $status, "message" => "Ha ocurrido un error con el servidor, intentelo más tarde."];
             echo json_encode($response);
-        } 
+        }
         else {
             $status = true;
             $correo = new Correo();
@@ -55,19 +55,26 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus natus nemo cupiditate vel nesciunt. <br>
                             Maiores voluptates ex accusamus eius veniam.
                             ";
-            $correo -> enviarCorreo(
+            $correo->enviarCorreo(
                 $email,
                 'Registro de Usuario',
                 $cuerpoCorreo,
                 'Te has registrado correctamente a nuestra plataforma.'
             );
-             // Problema logico...
-            if(isset($response -> errors)) {
-                echo json_encode($response);
+            $response = json_decode($response);
+            /* 
+                Validar si se obtuvo de la API como respuesta la excepción del correo electronico
+                excediendo los 20 caracteres.
+            */
+            if (isset($response->errors->Email[0])) {
+                $status = false;
+                $message = $response->errors->Email[0];
+                $customResponse = ["status" => $status, "message" => $message];
+                echo json_encode($customResponse);
             }
             else {
-                $response = ["status" => $status, "message" => "Has sido registrado, ¡bienvenido!"];
-                echo json_encode($response);
+                $customResponse = ["status" => $status, "message" => "Has sido registrado, ¡bienvenido $name!"];
+                echo json_encode($customResponse);
             }
         }
         curl_close($ch);

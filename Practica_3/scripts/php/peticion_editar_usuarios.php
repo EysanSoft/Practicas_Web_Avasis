@@ -55,13 +55,19 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
             'Tus datos fueron actualizados correctamente, veras los cambios reflejados en unos 5 minutos.'
         );
         $response = json_decode($response);
-        if(isset($response->Errors->Email[0])) {
-            $newResponse = ["status" => $status, "message" => $response->Errors->Email[0]];
-            echo json_encode($response);
+        /* 
+            Validar si se obtuvo de la API como respuesta la excepción del correo electronico
+            excediendo los 20 caracteres.
+        */
+        if(isset($response->errors->Email[0])) {
+            $status = false;
+            $message = $response->errors->Email[0];
+            $customResponse = ["status" => $status, "message" => $message];
+            echo json_encode($customResponse);
         }
         else {
-            $response = ["status" => $status, "message" => "Tus datos personales fueron actualizados."];
-            echo json_encode($response);
+            $customResponse = ["status" => $status, "message" => "Tus datos personales fueron actualizados."];
+            echo json_encode($customResponse);
         }
     }
     curl_close($ch);

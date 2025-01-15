@@ -52,7 +52,7 @@ $(document).ready(function () {
           location.reload();
         } 
         else {
-          // Error de la API.
+          // Error de la API, mostrar el mensaje de este.
           alert(response.message);
         }
       },

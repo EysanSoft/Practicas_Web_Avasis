@@ -1,5 +1,7 @@
 <?php
+include "../../endpoints.php";
 include "correo.php";
+
 $id = $_POST["hiddenIdUser"];
 $name = $_POST["nombre"];
 $lastName = $_POST["apellido"];
@@ -17,7 +19,7 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
         'email' => $email,
     );
     $json_data = json_encode($data);
-    $url = 'https://pruebas.avasisservices.com/user/edit/';
+    $url = EndPoints::$apiUrl . EndPoints::$editarUsuario;
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");

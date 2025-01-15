@@ -1,5 +1,6 @@
 <?php	
-$url = "https://pruebas.avasisservices.com/user/data";
+include "../../endpoints.php";
+$url = EndPoints::$apiUrl . EndPoints::$obtenerUsuario;
 $ch = curl_init($url);
 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.php">Index</a>
+                    <a class="nav-link" href="./index.php">Index</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -19,18 +19,16 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./Practica_2/index.php">Práctica 2 / Tabla y Dropdown</a>
+                    <a class="nav-link" href="../Practica_2/index.php">Práctica 2 / Tabla y Dropdown</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Práctica 3
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./Practica_3/index.php">Formulario con Jquery Submit</a></li>
-                        <li><a class="dropdown-item" href="./Practica_3/views/ejemplos_jquery.html">Demo Jquery</a></li>
-                        <li>
-                            <a class="dropdown-item" href="./Practica_3/views/tabla_usuarios.php">Tabla Usuarios</a>
-                        </li>
+                        <li><a class="dropdown-item" href="../Practica_3/index.php">Formulario con Jquery Submit</a></li>
+                        <li><a class="dropdown-item" href="../Practica_3/views/ejemplos_jquery.html">Demo Jquery</a></li>
+                        <li><a class="dropdown-item" href="../Practica_3/views/tabla_usuarios.php">Tabla Usuarios</a></li>
                     </ul>
                 </li>
             </ul>

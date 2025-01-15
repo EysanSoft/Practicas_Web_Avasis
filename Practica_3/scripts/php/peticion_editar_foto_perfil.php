@@ -1,4 +1,5 @@
 <?php
+include "../../endpoints.php";
 $status = false;
 $userId = $_POST["idUser"];
 $currentImageName = isset($_POST["imageName"]) ? $_POST["imageName"] : "";
@@ -26,7 +27,7 @@ if ($extension[1] == "png" || $extension[1] == "jpg" || $extension[1] == "jpeg")
                 'image' => $nombreImagen,
             );
             $json_data = json_encode($data);
-            $url = 'https://pruebas.avasisservices.com/user/img';
+            $url = EndPoints::$apiUrl . EndPoints::$editarFotoPerfil;
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");

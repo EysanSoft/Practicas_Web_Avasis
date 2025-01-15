@@ -1,6 +1,7 @@
 <?php
+include "../../endpoints.php";
 $indexID = $_POST['postID'];	
-$url = "https://pruebas.avasisservices.com/user/data/" . $indexID;
+$url = EndPoints::$apiUrl . EndPoints::$obtenerUsuario . $indexID;
 $ch = curl_init($url);
 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

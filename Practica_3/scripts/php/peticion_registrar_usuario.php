@@ -1,4 +1,5 @@
 <?php
+include "../../endpoints.php";
 include "correo.php";
 $name = $_POST["nombre"];
 $lastName = $_POST["apellido"];
@@ -24,6 +25,7 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
         );
         $json_data = json_encode($data);
         $url = 'https://pruebas.avasisservices.com/user/create';
+        $url = EndPoints::$apiUrl . EndPoints::$registrarUsuario;
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);

@@ -1,11 +1,11 @@
 <?php
-include "../../rutas.php";
+include "../../endpoints.php";
 $id = $_POST["userID"];
 $status = false;
-// Directamente se puede concatenar el id para la peticion DELETE.
-$urlEliminar = Ruta::$url . Ruta::$eliminar . $id;
+// Directamente se puede concatenar la id para la peticion DELETE.
+$url = EndPoints::$apiUrl . EndPoints::$eliminarUsuario . $id;
 
-$ch = curl_init($urlEliminar);
+$ch = curl_init($url);
 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");

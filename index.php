@@ -9,9 +9,7 @@
 </head>
 
 <body>
-    <?php
-    include 'layout/navbar.php'; 
-    ?>
+    <?php include 'layout/navbar.php'; ?>
     <div class="row mt-5 text-center">
         <div class="col-12">
             <h1 class="display-1">Prácticas Iván</h1>

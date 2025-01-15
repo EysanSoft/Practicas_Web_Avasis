@@ -1,8 +1,6 @@
 <?php
+include "../../endpoints.php";
 $userId = $_POST["idUser"];
-// La variable quedara inutilizada por el momento...
-// $oldPassword = $_POST["contraOG"];
-// Falta la contraseña actual, para validar.
 $newPassword = $_POST["contra"];
 $newPassword2 = $_POST["conContra"];
 
@@ -14,7 +12,7 @@ if(empty(trim($newPassword)) !== true && empty(trim($newPassword2)) !== true) {
             'password' => $newPassword,
         );
         $json_data = json_encode($data);
-        $url = 'https://pruebas.avasisservices.com/user/edit/password';
+        $url = EndPoints::$apiUrl . EndPoints::$editarContra;
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");        

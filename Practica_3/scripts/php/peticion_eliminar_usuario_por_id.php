@@ -1,9 +1,11 @@
 <?php
+include "../../rutas.php";
 $id = $_POST["userID"];
 $status = false;
 // Directamente se puede concatenar el id para la peticion DELETE.
-$url = 'https://pruebas.avasisservices.com/user/delete/' . $id;
-$ch = curl_init($url);
+$urlEliminar = Ruta::$url . Ruta::$eliminar . $id;
+
+$ch = curl_init($urlEliminar);
 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");

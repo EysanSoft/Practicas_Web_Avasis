@@ -3,23 +3,30 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 require '../../../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable('../../../');
+$dotenv->load();
 class Correo {
+    
     public function enviarCorreo($correo, $asunto, $cuerpo, $cuerpoSinEstilos) {
+        $usuario = $_ENV['REMITENTE_USUARIO'];
+        $contra = $_ENV['CONTRA_REMITENTE_USUARIO'];
+        $host = $_ENV['SMTP_HOST'];
+        $puerto = $_ENV['SMTP_PORT'];
         $mail = new PHPMailer(true);
 
         try {
             // Configuraciones
             // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
             $mail->isSMTP();                                            
-            $mail->Host       = 'smtp.hostinger.com';            
+            $mail->Host       = $host;            
             $mail->SMTPAuth   = true;                                  
-            $mail->Username   = 'pruebas@avasis-ti.com';               
-            $mail->Password   = 'C24p*ER.235';                         
+            $mail->Username   = $usuario;               
+            $mail->Password   = $contra;                         
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
-            $mail->Port       = 465;                                  
+            $mail->Port       = $puerto;                                  
 
             // Remitente
-            $mail->setFrom('pruebas@avasis-ti.com', 'Correo Pruebas');
+            $mail->setFrom($usuario, 'Correo Pruebas');
             // Destinatario
             $mail->addAddress($correo);    
 

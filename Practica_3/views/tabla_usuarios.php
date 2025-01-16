@@ -98,6 +98,7 @@
                                 <div class="mb-3">
                                     <label for="contra" class="form-label">Contraseña Nueva</label>
                                     <input type="password" class="form-control" id="contra" name="contra" required />
+                                    <small>Minimo 8 caracteres, una letra en mayuscula y otra en minuscula, un numero y un simbolo especial (#?!@$%^&*-)</small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="conContra" class="form-label">Confirmar Contraseña Nueva</label>

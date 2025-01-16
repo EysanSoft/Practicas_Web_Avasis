@@ -1,18 +1,29 @@
 <?php
 include "shared/endpoints.php";
 include "correo.php";
-$name = $_POST["nombre"];
-$lastName = $_POST["apellido"];
-$phone = $_POST["telefono"];
+$name = strip_tags($_POST["nombre"]);
+$lastName = strip_tags($_POST["apellido"]);
+// Validar telefono.
+$phone = strip_tags($_POST["telefono"]);
+$phone = str_replace(' ', '', $phone);
+$phone = str_replace('-', '', $phone);
 $phone = strval($phone);
-$email = $_POST["correo"];
-$password = $_POST["contra"];
-$password2 = $_POST["conContra"];
+$email = strip_tags($_POST["correo"]);
+// Validar contraseña.
+$password_regex = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/";
+$password = strip_tags($_POST["contra"]);
+$password2 = strip_tags($_POST["conContra"]);
 $status = false;
 
-if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim($phone)) !== true && empty(trim($email)) !== true && empty(trim($password)) !== true && empty(trim($password2)) !== true) {
+if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim($phone)) !== true && empty(trim($email)) !== true && empty(trim($password)) !== true && empty(trim($password2)) !== true) { 
+    if(preg_match($password_regex, $password) == 0) {
+        $customResponse = ["status" => $status, "message" => "La contraseña no cumple con los requisitos."];
+        echo json_encode($customResponse);
+        exit();
+    }
     if ($password != $password2) {
-        echo json_encode($status);
+        $customResponse = ["status" => $status, "message" => "¡Las contraseñas no coinciden!"];
+        echo json_encode($customResponse);
         exit();
     }
     else {
@@ -54,13 +65,25 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
                 'Te has registrado correctamente a nuestra plataforma.'
             );
             $response = json_decode($response);
-            /* 
-                Validar si se obtuvo de la API como respuesta la excepción del correo electronico
-                excediendo los 20 caracteres.
-            */
-            if (isset($response->errors->Email[0])) {
+
+            // Validar si se obtuvo una excepción de parte de la API.
+            if (isset($response->errors)) {
                 $status = false;
-                $message = $response->errors->Email[0];
+                if(isset($response->errors->Email[0])) {
+                    $message = $response->errors->Email[0];
+                }
+                elseif(isset($response->errors->Phone[0])) {
+                    $message = $response->errors->Phone[0];
+                }
+                elseif(isset($response->errors->Name[0])) {
+                    $message = $response->errors->LastName[0];
+                }
+                elseif(isset($response->errors->LastName[0])) {
+                    $message = $response->errors->LastName[0];
+                }
+                else {
+                    $message = "Ha ocurrido un error con el servidor, intentelo más tarde.";
+                }
                 $customResponse = ["status" => $status, "message" => $message];
                 echo json_encode($customResponse);
             }

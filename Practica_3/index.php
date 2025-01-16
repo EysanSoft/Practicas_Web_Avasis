@@ -63,11 +63,12 @@
         <div class="mb-3">
           <label for="contra" class="form-label">Contraseña</label>
           <input
-            type="password"
-            class="form-control"
-            id="contra"
-            name="contra"
-            required />
+          type="password"
+          class="form-control"
+          id="contra"
+          name="contra"
+          required />
+          <small>Minimo 8 caracteres, una letra en mayuscula y otra en minuscula, un numero y un simbolo especial (#?!@$%^&*-)</small>
         </div>
         <div class="mb-3">
           <label for="conContra" class="form-label">Confirmar Contraseña</label>
@@ -116,7 +117,7 @@
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-  <script src="../libs/jquery-3.7.1.min.js"></script>
+  <?php include '../layout/scripts.php'; ?>
   <script src="scripts/javascript/formulario_registro_de_usuarios.js?v=<?php echo uniqid() ?>"></script>
 </body>
 </html>

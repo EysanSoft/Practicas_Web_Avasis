@@ -201,7 +201,7 @@ function abrirModalEditarUsuario(postID) {
     },
     success: function (result) {
       let data = result.data;
-      console.log(data);
+      // console.log(data);
       data.forEach((element) => {
         $("#editarUsuariosForm").append(
           `<div class="d.none">` +

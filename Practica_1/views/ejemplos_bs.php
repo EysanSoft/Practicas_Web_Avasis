@@ -47,6 +47,9 @@
               <li><a class="dropdown-item" href="../../Practica_3/views/tabla_usuarios.php">Tabla Usuarios</a></li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="../../Practica_4/index.php">Práctica 4 / Registro de Usuarios por Xlsx</a>
+          </li>
         </ul>
       </div>
     </div>

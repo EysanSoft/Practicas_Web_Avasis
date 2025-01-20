@@ -35,7 +35,7 @@ include 'scripts/php/peticion_indice.php';
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./index.php">Práctica 2 / Tabla y Dropdown</a>
+            <a class="nav-link active" href="./index.php">Práctica 2 / Tabla y Dropdown</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,7 +48,7 @@ include 'scripts/php/peticion_indice.php';
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="../Practica_4/index.php">Práctica 4 / Registro de Usuarios por Xlsx</a>
+            <a class="nav-link" href="../Practica_4/index.php">Práctica 4 / Registro de Usuarios por Xlsx</a>
           </li>
         </ul>
       </div>

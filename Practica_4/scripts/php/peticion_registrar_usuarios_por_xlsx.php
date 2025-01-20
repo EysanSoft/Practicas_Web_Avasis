@@ -13,6 +13,7 @@ if ($extension[1] == "xlsx" || $extension[1] == "xls") {
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
         $reader->setReadDataOnly(TRUE);
+        $reader->setReadEmptyCells(false);
         $spreadsheet = $reader -> load($rutaDeHoja);
         $worksheet = $spreadsheet -> getActiveSheet();
         $registrosFallidos = [];
@@ -87,16 +88,22 @@ function registrar($datosExtraidos) {
         
             if (curl_errno($ch)) {
                 throw new Exception(curl_error($ch));
+                curl_close($ch);
                 return false;
             }
             else {
+                $response = json_decode($response);
+    
                 // Validar si se obtuvo una excepción de parte de la API.
                 if (isset($response->errors)) {
+                    curl_close($ch);
                     return false;
                 }
+                else {
+                    curl_close($ch);
+                    return true;
+                }
             }
-            curl_close($ch);
-            return true;
         }
         else {
             return false;

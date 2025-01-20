@@ -33,14 +33,15 @@ if ($extension[1] == "png" || $extension[1] == "jpg" || $extension[1] == "jpeg")
             if (curl_errno($ch)) {
                 throw new Exception(curl_error($ch));
                 $response = ["status" => $status, "message" => "Ha ocurrido un error con el servidor, intentelo más tarde."];
+                curl_close($ch);
                 echo json_encode($response);
             } 
             else {
                 $status = true;
                 $response = ["status" => $status, "message" => "¡Foto de perfil establecida!"];
+                curl_close($ch);
                 echo json_encode($response);
             }
-            curl_close($ch);
         } 
         else {
             $response = ["status" => $status, "message" => "Uno o mas campos estan vacios"];

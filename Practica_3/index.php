@@ -37,17 +37,17 @@
             <a class="nav-link" href="../Practica_2/index.php">Práctica 2 / Tabla y Dropdown</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Práctica 3
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="./index.php">Formulario con Jquery Submit</a></li>
+              <li><a class="dropdown-item active" href="./index.php">Formulario con Jquery Submit</a></li>
               <li><a class="dropdown-item" href="./views/ejemplos_jquery.php">Demo Jquery</a></li>
               <li><a class="dropdown-item" href="./views/tabla_usuarios.php">Tabla Usuarios</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="../Practica_4/index.php">Práctica 4 / Registro de Usuarios por Xlsx</a>
+            <a class="nav-link" href="../Practica_4/index.php">Práctica 4 / Registro de Usuarios por Xlsx</a>
           </li>
         </ul>
       </div>

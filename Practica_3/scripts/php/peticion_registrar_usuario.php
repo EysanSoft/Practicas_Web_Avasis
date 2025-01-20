@@ -41,6 +41,7 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
         if (curl_errno($ch)) {
             throw new Exception(curl_error($ch));
             $response = ["status" => $status, "message" => "Ha ocurrido un error con el servidor, intentelo más tarde."];
+            curl_close($ch);
             echo json_encode($response);
         }
         else {
@@ -85,14 +86,15 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
                     $message = "Ha ocurrido un error con el servidor, intentelo más tarde.";
                 }
                 $customResponse = ["status" => $status, "message" => $message];
+                curl_close($ch);
                 echo json_encode($customResponse);
             }
             else {
                 $customResponse = ["status" => $status, "message" => "Has sido registrado, ¡bienvenido $name!"];
+                curl_close($ch);
                 echo json_encode($customResponse);
             }
         }
-        curl_close($ch);
     }
 }
 else {

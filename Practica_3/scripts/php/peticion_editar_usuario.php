@@ -28,8 +28,10 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
     if (curl_errno($ch)) {
         throw new Exception(curl_error($ch));
         $response = ["status" => $status, "message" => "Ha ocurrido un error con el servidor, intentelo más tarde."];
+        curl_close($ch);
         echo json_encode($response);
-    } else {
+    }
+    else {
         $status = true;
         $correo = new Correo();
         $cuerpoCorreo = "
@@ -70,15 +72,17 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
                 $message = "Ha ocurrido un error con el servidor, intentelo más tarde.";
             }
             $customResponse = ["status" => $status, "message" => $message];
+            curl_close($ch);
             echo json_encode($customResponse);
         }
         else {
             $customResponse = ["status" => $status, "message" => "Tus datos personales fueron actualizados."];
+            curl_close($ch);
             echo json_encode($customResponse);
         }
     }
-    curl_close($ch);
-} else {
+}
+else {
     $response = ["status" => $status, "message" => "Uno o más campos están vacíos"];
     echo json_encode($response);
     exit();

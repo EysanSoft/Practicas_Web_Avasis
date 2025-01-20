@@ -52,11 +52,11 @@
             </div>
         </div>
     </nav>
-    <!-- Formulario. -->
+    <!-- Formulario -->
     <div class="row mx-5 mt-5 justify-content-center">
         <div class="col-3">
             <form
-                action="scripts/php/peticion_registrar_usuarios_por_xlsx.php"
+                action="scripts/php/peticion_registrar_usuarios.php"
                 class="form"
                 id="formularioRegistrarUsuariosConXlsx"
                 method="POST">
@@ -70,12 +70,18 @@
             </form>
         </div>
     </div>
+    <!-- Botón de descarga -->
+    <div class="row mx-5 mt-5 justify-content-center">
+        <div class="col-3 text-center">
+            <button class="btn btn-success" id="botonDescargarTodosUsuarios" onClick="descargarTodosLosUsuarios()">Descargar todos los usuarios</button>
+        </div>
+    </div>
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous">
     </script>
     <script src="../libs/jquery-3.7.1.min.js"></script>
-    <script src="./scripts/javascript/formulario_registro_de_usuarios.js"></script>
+    <script src="./scripts/javascript/funciones_usuarios_&_hojas_de_calculo.js"></script>
 </body>
 </html>

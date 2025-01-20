@@ -48,3 +48,23 @@ $(document).ready(function () {
     });
   });
 });
+
+function descargarTodosLosUsuarios() {
+  jQuery.ajax({
+    url: "scripts/php/peticion_descargar_todos_los_usuarios.php",
+    type: "GET",
+    dataType: "JSON",
+    success: function (result) {
+      if(result.status == true) {
+        alert(result.message);
+        location.reload();
+      }
+      else {
+        alert(result.message);
+      }
+    },
+    error: function (error) {
+      console.error("Error:", error);
+    },
+  });
+}

@@ -25,17 +25,17 @@ $(document).ready(function () {
         $("#submitRegistrarUsuariosConXlsx").append("Registrar Usuarios");
         // Mostrar Alert.
         if (response.status == true) {
-          /*
           if(typeof response.failedEntries !== 'undefined') {
-            $mensaje = response.message + ""
+            let $mensaje = response.message;
+            for (let i = 0; i < response.failedEntries.length; i++) {
+              $mensaje += "\n" + response.failedEntries[i];
+            }
             alert($mensaje);
           }
           else {
             alert(response.message);
+            location.reload();
           }
-          */
-          alert(response.message);
-          // location.reload();
         }
         else {
           alert(response.message);

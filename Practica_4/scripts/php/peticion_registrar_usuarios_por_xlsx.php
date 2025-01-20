@@ -39,11 +39,11 @@ if ($extension[1] == "xlsx" || $extension[1] == "xls") {
         unlink($rutaDeHoja);
 
         if (!$registrosFallidos) {
-            $response = ["status" => $status, "message" => "Todas las entradas de usuarios fueron registradas."];
+            $response = ["status" => $status, "message" => "Todas las entradas de usuario fueron registradas."];
             echo json_encode($response);
         }
         else {
-            $response = ["status" => $status, "message" => "Algunas entradas no fueron registradas.", "failedEntries" => $registrosFallidos];
+            $response = ["status" => $status, "message" => "Algunas entradas de usuario no fueron registradas, estos fueron:", "failedEntries" => $registrosFallidos];
             echo json_encode($response);
         }
     }
@@ -60,41 +60,49 @@ else {
 }
 
 function registrar($datosExtraidos) {
-    /*
-    $name = strip_tags($_POST["nombre"]);
-    $lastName = strip_tags($_POST["apellido"]);
-    
-    $phone = strip_tags($_POST["telefono"]);
-    $phone = str_replace(' ', '', $phone);
-    $phone = str_replace('-', '', $phone);
-    $phone = strval($phone);
-    $email = strip_tags($_POST["correo"]);
-    
-    $password_regex = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/";
-    $password = strip_tags($_POST["contra"]);
-    $password2 = strip_tags($_POST["conContra"]);
-    */
-    $data = array(
-        'name' => $datosExtraidos[0],
-        'lastName' => $datosExtraidos[1],
-        'phone' => strval($datosExtraidos[2]),
-        'email' => $datosExtraidos[3],
-        'password' => $datosExtraidos[4],
-    );
-    $url = EndPoints::$apiUrl . EndPoints::$registrarUsuario;
+    $nombre = strip_tags($datosExtraidos[0]);
+    $apellido = strip_tags($datosExtraidos[1]);
+    // Eliminar espacios y guiones del numero telefónico.
+    $telefono = strip_tags($datosExtraidos[2]);
+    $telefono = str_replace(' ', '', $telefono);
+    $telefono = str_replace('-', '', $telefono);
+    $telefono = strval($telefono);
+    $correo = strip_tags($datosExtraidos[3]);
+    // Expresión regular para validar la contraseña.
+    $expRegCon = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/";
+    $contra = strip_tags($datosExtraidos[4]);
 
-    include "../../../Practica_3/scripts/php/shared/curl_opts/post_opt.php";
-
-    if (curl_errno($ch)) {
-        throw new Exception(curl_error($ch));
-        return false;
-    }
-    else {
-        // Validar si se obtuvo una excepción de parte de la API.
-        if (isset($response->errors)) {
+    if (empty(trim($nombre)) !== true && empty(trim($apellido)) !== true && empty(trim($telefono)) !== true && empty(trim($correo)) !== true && empty(trim($contra)) !== true) {
+        if (preg_match($expRegCon, $contra) == 1) {
+            $data = array(
+                'name' => $nombre,
+                'lastName' => $apellido,
+                'phone' => strval($telefono),
+                'email' => $correo,
+                'password' => $contra,
+            );
+            $url = EndPoints::$apiUrl . EndPoints::$registrarUsuario;
+        
+            include "../../../Practica_3/scripts/php/shared/curl_opts/post_opt.php";
+        
+            if (curl_errno($ch)) {
+                throw new Exception(curl_error($ch));
+                return false;
+            }
+            else {
+                // Validar si se obtuvo una excepción de parte de la API.
+                if (isset($response->errors)) {
+                    return false;
+                }
+            }
+            curl_close($ch);
+            return true;
+        }
+        else {
             return false;
         }
     }
-    curl_close($ch);
-    return true;
+    else {
+        return false;
+    }
 }

@@ -29,7 +29,7 @@ if ($extension[1] == "xlsx" || $extension[1] == "xls") {
                 $i++;
             }
             // Validar los datos...
-            if($datosExtraidos[0] != "NOMBRE") {
+            if($datosExtraidos[0] != "NOMBRE" && $datosExtraidos[0] != "undefined" && $datosExtraidos[0] != null) {
                 $entradaRegistrada = registrar($datosExtraidos);
                 if ($entradaRegistrada == false) {
                     $registrosFallidos[] = $datosExtraidos[0];

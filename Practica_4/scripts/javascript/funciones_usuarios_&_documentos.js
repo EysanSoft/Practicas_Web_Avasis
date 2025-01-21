@@ -83,9 +83,43 @@ $(document).ready(function () {
     });
   });
 
-  $("#botonDescargarTodosUsuarios").on("click", function () {
+  $("#botonDescargarTodosUsuariosXLSX").on("click", function () {
     jQuery.ajax({
-      url: "scripts/php/peticion_descargar_todos_los_usuarios.php",
+      url: "scripts/php/peticion_descargar_usuarios_en_xlsx.php",
+      type: "GET",
+      dataType: "JSON",
+      success: function (result) {
+        if (result.status == true) {
+          Swal.fire({
+            title: 'Descarga Exitosa',
+            text: result.message,
+            icon: 'success',
+            confirmButtonText: 'Entendido'
+          });
+        }
+        else {
+          Swal.fire({
+            title: "Ha ocurrido un error...",
+            text: result.message,
+            icon: "error",
+            confirmButtonText: "Entendido",
+          });
+        }
+      },
+      error: function (error) {
+        Swal.fire({
+          title: "Ha ocurrido un error técnico...",
+          html: error + "<br>" + "Comuníquese con el administrador del sistema.",
+          icon: "error",
+          confirmButtonText: "Entendido",
+        });
+      },
+    });
+  });
+
+  $("#botonDescargarTodosUsuariosPDF").on("click", function () {
+    jQuery.ajax({
+      url: "scripts/php/peticion_descargar_usuarios_en_pdf.php",
       type: "GET",
       dataType: "JSON",
       success: function (result) {

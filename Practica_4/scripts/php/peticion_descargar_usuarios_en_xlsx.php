@@ -14,9 +14,9 @@ $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, "Xlsx"
 
 $rowArray = ['Nombre', 'Apellido', 'Telefono', 'Correo', 'Imagen'];
 $spreadsheet->getActiveSheet()->fromArray(
-    $rowArray,   // The data to set
-    NULL,        // Array values with this value will not be set
-    'A1'         // Top left coordinate of the worksheet range where we want to set these values (default is A1)
+    $rowArray,   // Los valores a establecer en la hoja de cálculo.
+    NULL,        // Los valores nulos se establecen en blanco.
+    'A1'         // Las cordenadas para insertar los valores. (Por defecto, A1).
 );
 
 if($dataArray == null) {

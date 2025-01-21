@@ -59,7 +59,7 @@
     <div class="row mx-5 mt-5 justify-content-center">
         <div class="col-3">
             <form
-                action="scripts/php/peticion_registrar_usuarios.php"
+                action="scripts/php/peticion_registrar_usuarios_con_xlsx.php"
                 class="form"
                 id="formularioRegistrarUsuariosConXlsx"
                 method="POST">
@@ -73,10 +73,16 @@
             </form>
         </div>
     </div>
-    <!-- Botón de descarga -->
+    <!-- Botón de descarga en XLSX -->
     <div class="row mx-5 mt-5 justify-content-center">
         <div class="col-3 text-center">
-            <button class="btn btn-success" id="botonDescargarTodosUsuarios">Descargar todos los usuarios</button>
+            <button class="btn btn-success" id="botonDescargarTodosUsuariosXLSX">Descargar todos los usuarios en XLSX</button>
+        </div>
+    </div>
+    <!-- Botón de descarga en PDF -->
+    <div class="row mx-5 mt-5 justify-content-center">
+        <div class="col-3 text-center">
+            <button class="btn btn-danger" id="botonDescargarTodosUsuariosPDF">Descargar todos los usuarios en PDF</button>
         </div>
     </div>
     <script
@@ -86,6 +92,6 @@
     </script>
     <script src="../libs/jquery-3.7.1.min.js"></script>
     <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-    <script src="./scripts/javascript/funciones_usuarios_&_hojas_de_calculo.js"></script>
+    <script src="./scripts/javascript/funciones_usuarios_&_documentos.js"></script>
 </body>
 </html>

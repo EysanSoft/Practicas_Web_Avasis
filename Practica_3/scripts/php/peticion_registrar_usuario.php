@@ -77,7 +77,7 @@ if (empty(trim($name)) !== true && empty(trim($lastName)) !== true && empty(trim
                     $message = $response->errors->Phone[0];
                 }
                 elseif(isset($response->errors->Name[0])) {
-                    $message = $response->errors->LastName[0];
+                    $message = $response->errors->Name[0];
                 }
                 elseif(isset($response->errors->LastName[0])) {
                     $message = $response->errors->LastName[0];

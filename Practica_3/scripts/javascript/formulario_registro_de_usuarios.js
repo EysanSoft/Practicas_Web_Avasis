@@ -28,19 +28,35 @@ $(document).ready(function () {
           $("#submit").prop("disabled", false);
           $(".submitRegistrarUsuario").empty();
           $(".submitRegistrarUsuario").append("Registrarte");
-          // Modal con mensaje.
-          $("#contenidoModal").empty();
-          $("#contenidoModal").append(`<p>${response.message}</p>`);
-          $("#modalAlert").modal("show");
+          // Mostrar Alert sweetalert2
           if (response.status == true) {
-            $("#botonCerrarModal").attr("onClick", "location.reload()");
+            Swal.fire({
+              title: '¡Registro Exitoso!',
+              text: response.message,
+              icon: 'success',
+              confirmButtonText: 'Entendido'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                location.reload();
+              }
+            });
           }
           else {
-            $("#botonCerrarModal").attr("onClick", "");
+            Swal.fire({
+              title: "¡Registro Fallido!",
+              text: response.message,
+              icon: "error",
+              confirmButtonText: "Entendido",
+            });
           } 
         },
         error: function (error) {
-          alert("An error occurred: " + error);
+          Swal.fire({
+            title: "Ha ocurrido un error técnico...",
+            html: error + "<br>" + "Comuníquese con el administrador del sistema.",
+            icon: "error",
+            confirmButtonText: "Entendido",
+          });
         },
       });
     } 

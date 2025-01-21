@@ -75,7 +75,7 @@ $(document).ready(function () {
       error: function (error) {
         Swal.fire({
           title: "Ha ocurrido un error técnico...",
-          text: error + "\n Comuníquese con el administrador del sistema.",
+          html: error + "<br>" + "Comuníquese con el administrador del sistema.",
           icon: "error",
           confirmButtonText: "Entendido",
         });
@@ -109,7 +109,7 @@ $(document).ready(function () {
       error: function (error) {
         Swal.fire({
           title: "Ha ocurrido un error técnico...",
-          text: error + "\n Comuníquese con el administrador del sistema.",
+          html: error + "<br>" + "Comuníquese con el administrador del sistema.",
           icon: "error",
           confirmButtonText: "Entendido",
         });

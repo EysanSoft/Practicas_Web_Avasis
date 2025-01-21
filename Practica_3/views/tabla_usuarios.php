@@ -10,6 +10,9 @@
         rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous" />
+    <link
+        href="../../node_modules/sweetalert2/dist/sweetalert2.min.css"
+        rel="stylesheet" />
 </head>
 
 <body>
@@ -218,6 +221,7 @@
         crossorigin="anonymous">
     </script>
     <script src="../../libs/jquery-3.7.1.min.js"></script>
+    <script src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="../scripts/javascript/tabla_usuarios.js"></script>
 </body>
 

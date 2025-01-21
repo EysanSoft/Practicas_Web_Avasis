@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  // $('.dropify').dropify();
   // Eliminar el mensaje "Sin datos." en la tabla.
   $("#tablaUsuarios").empty();
 
@@ -25,7 +24,12 @@ $(document).ready(function () {
       });
     },
     error: function (error) {
-      console.error("Error:", error);
+      Swal.fire({
+        title: "Ha ocurrido un error técnico...",
+        html: error + "<br>" + "Comuníquese con el administrador del sistema.",
+        icon: "error",
+        confirmButtonText: "Entendido",
+      });
     },
   });
 
@@ -54,17 +58,35 @@ $(document).ready(function () {
         $(".submitEditarUsuario").empty();
         $(".submitEditarUsuario").append("Guardar Cambios");
         if (response.status == true) {
-          alert(response.message);
-          $("#modalEditarUsuario").modal("hide");
-          location.reload();
+          Swal.fire({
+            title: 'Atención',
+            text: response.message,
+            icon: 'success',
+            confirmButtonText: 'Entendido'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $("#modalEditarUsuario").modal("hide");
+              location.reload();
+            }
+          });
         } 
         else {
           // Error de la API, mostrar el mensaje de este.
-          alert(response.message);
+          Swal.fire({
+            title: "Ha ocurrido un error...",
+            text: response.message,
+            icon: "error",
+            confirmButtonText: "Entendido",
+          });
         }
       },
       error: function (error) {
-        alert("An error occurred: " + error);
+        Swal.fire({
+          title: "Ha ocurrido un error técnico...",
+          html: error + "<br>" + "Comuníquese con el administrador del sistema.",
+          icon: "error",
+          confirmButtonText: "Entendido",
+        });
       },
     });
   });
@@ -89,19 +111,39 @@ $(document).ready(function () {
         contentType: false,
         success: function (response) {
           if (response.status == true) {
-            alert(response.message);
-            $("#modalEditarUsuario").modal("hide");
-            location.reload();
-          } else {
+            Swal.fire({
+              title: 'Atención',
+              text: response.message,
+              icon: 'success',
+              confirmButtonText: 'Entendido'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                $("#modalEditarUsuario").modal("hide");
+                location.reload();
+              }
+            });
+          }
+          else {
             // Error del servidor...
-            alert(response.message);
+            Swal.fire({
+              title: "Ha ocurrido un error...",
+              text: response.message,
+              icon: "error",
+              confirmButtonText: "Entendido",
+            });
           }
         },
         error: function (error) {
-          alert("An error occurred: " + error);
+          Swal.fire({
+            title: "Ha ocurrido un error técnico...",
+            html: error + "<br>" + "Comuníquese con el administrador del sistema.",
+            icon: "error",
+            confirmButtonText: "Entendido",
+          });
         },
       });
-    } else {
+    }
+    else {
       $("#mensajeConNoCoin").show();
       return false;
     }
@@ -128,20 +170,45 @@ $(document).ready(function () {
         contentType: false,
         success: function (response) {
           if (response.status == true) {
-            alert(response.message);
-            $("#modalEditarUsuario").modal("hide");
-            location.reload();
-          } else {
+            Swal.fire({
+              title: 'Atención',
+              text: response.message,
+              icon: 'success',
+              confirmButtonText: 'Entendido'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                $("#modalEditarUsuario").modal("hide");
+                location.reload();
+              }
+            });
+          }
+          else {
             // Error del servidor...
-            alert(response.message);
+            Swal.fire({
+              title: "Ha ocurrido un error...",
+              text: response.message,
+              icon: "error",
+              confirmButtonText: "Entendido",
+            });
           }
         },
         error: function (error) {
-          alert("An error occurred: " + error);
+          Swal.fire({
+            title: "Ha ocurrido un error técnico...",
+            html: error + "<br>" + "Comuníquese con el administrador del sistema.",
+            icon: "error",
+            confirmButtonText: "Entendido",
+          });
         },
       });
-    } catch (error) {
-      alert("Ninguna imagen seleccionada.");
+    }
+    catch (error) {
+      Swal.fire({
+        title: "Atención",
+        text: "Ninguna imagen seleccionada.",
+        icon: "warning",
+        confirmButtonText: "Entendido",
+      });
     }
   });
 
@@ -232,7 +299,12 @@ function abrirModalEditarUsuario(postID) {
       });
     },
     error: function (error) {
-      console.error("Error:", error);
+      Swal.fire({
+        title: "Ha ocurrido un error técnico...",
+        html: error + "<br>" + "Comuníquese con el administrador del sistema.",
+        icon: "error",
+        confirmButtonText: "Entendido",
+      });
     },
   });
 }
@@ -262,16 +334,35 @@ function peticionEliminarUsuario(userID) {
     },
     success: function (response) {
       if (response.status == true) {
-        alert(response.message);
-        $("#modalEliminarUsuario").modal("hide");
-        location.reload();
-      } else {
+        Swal.fire({
+          title: 'Atención',
+          text: response.message,
+          icon: 'success',
+          confirmButtonText: 'Entendido'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $("#modalEliminarUsuario").modal("hide");
+            location.reload();
+          }
+        });
+      }
+      else {
         // Error del servidor...
-        alert(response.message);
+        Swal.fire({
+          title: "Ha ocurrido un error...",
+          text: response.message,
+          icon: "error",
+          confirmButtonText: "Entendido",
+        });
       }
     },
     error: function (error) {
-      alert("An error occurred: " + error);
+      Swal.fire({
+        title: "Ha ocurrido un error técnico...",
+        html: error + "<br>" + "Comuníquese con el administrador del sistema.",
+        icon: "error",
+        confirmButtonText: "Entendido",
+      });
     },
   });
 }

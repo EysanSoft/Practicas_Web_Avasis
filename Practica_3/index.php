@@ -10,6 +10,9 @@
     rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous" />
+  <link
+    href="../node_modules/sweetalert2/dist/sweetalert2.min.css"
+    rel="stylesheet" />
 </head>
 
 <body>
@@ -127,35 +130,12 @@
       </form>
     </div>
   </div>
-  <!-- Modal con mensaje. -->
-  <div
-    class="modal fade"
-    id="modalAlert"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    tabindex="-1"
-    aria-labelledby="staticBackdropLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <p>Atención</p>
-        </div>
-        <div class="modal-body" id="contenidoModal">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="botonCerrarModal" data-bs-dismiss="modal">
-            Cerrar
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="../libs/jquery-3.7.1.min.js"></script>
+  <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
   <script src="scripts/javascript/formulario_registro_de_usuarios.js?v=<?php echo uniqid() ?>"></script>
 </body>
 

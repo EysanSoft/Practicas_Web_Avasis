@@ -1,0 +1,22 @@
+{
+  "name": "practicas_ivan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EysanSoft/Practicas_Web_Avasis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EysanSoft/Practicas_Web_Avasis/issues"
+  },
+  "homepage": "https://github.com/EysanSoft/Practicas_Web_Avasis#readme",
+  "dependencies": {
+    "sweetalert2": "^11.15.10"
+  }
+}

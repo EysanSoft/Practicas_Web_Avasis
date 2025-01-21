@@ -2,3 +2,4 @@ libs
 resources
 vendor
 .env
+node_modules

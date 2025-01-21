@@ -9,6 +9,9 @@
         rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous" />
+    <link
+        href="../node_modules/sweetalert2/dist/sweetalert2.min.css"
+        rel="stylesheet" />
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -73,7 +76,7 @@
     <!-- Botón de descarga -->
     <div class="row mx-5 mt-5 justify-content-center">
         <div class="col-3 text-center">
-            <button class="btn btn-success" id="botonDescargarTodosUsuarios" onClick="descargarTodosLosUsuarios()">Descargar todos los usuarios</button>
+            <button class="btn btn-success" id="botonDescargarTodosUsuarios">Descargar todos los usuarios</button>
         </div>
     </div>
     <script
@@ -82,6 +85,7 @@
         crossorigin="anonymous">
     </script>
     <script src="../libs/jquery-3.7.1.min.js"></script>
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="./scripts/javascript/funciones_usuarios_&_hojas_de_calculo.js"></script>
 </body>
 </html>

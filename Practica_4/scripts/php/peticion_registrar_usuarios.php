@@ -44,7 +44,7 @@ if ($extension[1] == "xlsx" || $extension[1] == "xls") {
             echo json_encode($response);
         }
         else {
-            $response = ["status" => $status, "message" => "Algunas entradas de usuario no fueron registradas, estos fueron:", "failedEntries" => $registrosFallidos];
+            $response = ["status" => $status, "message" => "Algunas entradas de usuario fueron rechazadas debido a la falta de campos o requisitos, estos fueron:", "failedEntries" => $registrosFallidos];
             echo json_encode($response);
         }
     }

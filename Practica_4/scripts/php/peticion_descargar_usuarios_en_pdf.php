@@ -1,5 +1,4 @@
 <?php
-
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -16,7 +15,7 @@ $dataArray = $response->data;
 if ($dataArray == null) {
     $response = ["status" => false, "message" => "No hay usuarios registrados."];
     echo json_encode($response);
-}
+} 
 else {
     // Inicializar opciones de Dompdf.
     $options = new Options();
@@ -30,60 +29,77 @@ else {
     $magia = "";
     for ($i = 0; $i < count($dataArray); $i++) {
         $magia .= '<tr>';
-        $magia .= '<td>'. $dataArray[$i] -> name .'</td>';
-        $magia .= '<td>'. $dataArray[$i] -> lastName .'</td>';
-        $magia .= '<td>'. $dataArray[$i] -> phone .'</td>';
-        $magia .= '<td>'. $dataArray[$i] -> email .'</td>';
-        $magia .= '<tr>';
+        $magia .= '<td>' . $dataArray[$i] -> name . '</td>';
+        $magia .= '<td>' . $dataArray[$i] -> lastName . '</td>';
+        $magia .= '<td>' . $dataArray[$i] -> phone . '</td>';
+        $magia .= '<td>' . $dataArray[$i] -> email . '</td>';
+        $magia .= '</tr>';
     }
 
     // Escribir y cargar HTML.
     $docHTML = "
         <!DOCTYPE html>
-        <html lang='en'>
-
+    <html lang='en'>
         <head>
-        <meta charset='UTF-8' />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <title>Usuarios Avasis API</title>
-        <style>
-            table {
-            width: 100%;
-            border-collapse: collapse;
-            }
-
-            table,
-            th,
-            td {
-            border: 1px solid black;
-            }
-        </style>
+            <meta charset='UTF-8' />
+            <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+            <title>Usuarios Avasis API</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                }
+                h1 {
+                    text-align: center;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                th {
+                    background-color:rgb(255, 205, 205);
+                    height: 3em;
+                }
+                td {
+                    text-align: center;
+                }
+                tr:nth-child(even) {
+                    background-color:rgb(255, 200, 200);
+                }
+                tr:nth-child(odd) {
+                    background-color:rgb(255, 175, 175);
+                }
+                table,
+                th,
+                td {
+                    border: 1px solid black;
+                }
+            </style>
         </head>
-
         <body>
-        <div>
-            <table>
-            <thead>
-                <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-    "
-    .
-    $magia
-    .
-    "
-            </tbody>
-            </table>
-        </div>
+            <div>
+                <h1>Usuarios Avasis API</h1>
+                <table>
+                    <thead>
+                        <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        "
+                        .
+                        $magia
+                        .
+                        "
+                    </tbody>
+                </table>
+            </div>
         </body>
-        </html>
+    </html>
     ";
-            
+
     // $docHTML = "../../views/tabla_usuarios.php";
 
     $dompdf->loadHtml($docHTML);

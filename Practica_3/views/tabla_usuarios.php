@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Práctica 3 / Tabla Usuarios</title>
+    <title>Práctica 3 / Tabla de Usuarios (RUD)</title>
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -44,13 +44,16 @@
                             Práctica 3
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../index.php">Formulario con Jquery Submit</a></li>
+                            <li><a class="dropdown-item" href="../index.php">Registro de Usuarios (C)</a></li>
                             <li><a class="dropdown-item" href="./ejemplos_jquery.php">Demo Jquery</a></li>
-                            <li><a class="dropdown-item active" href="./tabla_usuarios.php">Tabla Usuarios</a></li>
+                            <li><a class="dropdown-item active" href="./tabla_usuarios.php">Tabla de Usuarios (RUD)</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../Practica_4/index.php">Práctica 4 / Registro de Usuarios por Xlsx</a>
+                        <a class="nav-link" href="../../Practica_4/index.php">Práctica 4 / Usuarios y Documentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../Practica_5/index.php">Práctica 5 / Gráficas</a>
                     </li>
                 </ul>
             </div>

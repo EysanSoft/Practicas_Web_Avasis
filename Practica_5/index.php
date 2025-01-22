@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práctica 4 / Usuarios y Documentos</title>
+    <title>Práctica 5 / Gráficas</title>
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous" />
-    <link
-        href="../node_modules/sweetalert2/dist/sweetalert2.min.css"
-        rel="stylesheet" />
 </head>
+
 <body>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -49,43 +48,25 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./index.php">Práctica 4 / Usuarios y Documentos</a>
+                        <a class="nav-link" href="../Practica_4/index.php">Práctica 4 / Usuarios y Documentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../Practica_5/index.php">Práctica 5 / Gráficas</a>
+                        <a class="nav-link active" href="./index.php">Práctica 5 / Gráficas</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- Formulario -->
-    <div class="row mx-5 mt-5 justify-content-center">
-        <div class="col-3">
-            <form
-                action="scripts/php/peticion_registrar_usuarios_con_xlsx.php"
-                class="form"
-                id="formularioRegistrarUsuariosConXlsx"
-                method="POST">
-                <div class="mb-3">
-                    <label for="hojaDeCalculo" class="form-label">Hoja de Cálculo</label>
-                    <input type="file" class="form-control" id="hojaDeCalculo" name="hojaDeCalculo" accept=".xlsx" required/>
-                </div>
-                <div class="mb-3">
-                    <button class="btn btn-primary" id="submitRegistrarUsuariosConXlsx">Registrar Usuarios</button>
-                </div>
-            </form>
+    <div class="row mx-5 justify-content-center">
+        <div class="col-6" id='myDiv1'>
         </div>
     </div>
-    <!-- Botón de descarga en XLSX -->
-    <div class="row mx-5 mt-5 justify-content-center">
-        <div class="col-3 text-center">
-            <button class="btn btn-success" id="botonDescargarTodosUsuariosXLSX">Descargar todos los usuarios en XLSX</button>
+    <div class="row mx-5 justify-content-center">
+        <div class="col-6" id='myDiv2'>
         </div>
     </div>
-    <!-- Botón de descarga en PDF -->
-    <div class="row mx-5 mt-5 justify-content-center">
-        <div class="col-3 text-center">
-            <button class="btn btn-danger" id="botonDescargarTodosUsuariosPDF">Descargar todos los usuarios en PDF</button>
+    <div class="row mx-5 justify-content-center">
+        <div class="col-6" id='myDiv3'>
         </div>
     </div>
     <script
@@ -94,7 +75,43 @@
         crossorigin="anonymous">
     </script>
     <script src="../libs/jquery-3.7.1.min.js"></script>
-    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-    <script src="./scripts/javascript/funciones_usuarios_&_documentos.js"></script>
+    <script src="../node_modules/plotly.js-dist-min/plotly.min.js"></script>
+    <script>
+        var data1 = [{
+            x: ['giraffes', 'orangutans', 'monkeys'],
+            y: [20, 14, 23],
+            type: 'bar'
+        }];
+
+        var trace1 = {
+            x: [1, 2, 3, 4],
+            y: [10, 15, 13, 17],
+            type: 'scatter'
+        };
+
+        var trace2 = {
+            x: [1, 2, 3, 4],
+            y: [16, 5, 11, 9],
+            type: 'scatter'
+        };
+
+        var data2 = [trace1, trace2];
+
+        var data3 = [{
+            values: [19, 26, 55],
+            labels: ['Residential', 'Non-Residential', 'Utility'],
+            type: 'pie'
+        }];
+        /*
+        var layout = {
+            height: 400,
+            width: 500
+        };
+        */
+        Plotly.newPlot('myDiv1', data1);
+        Plotly.newPlot('myDiv2', data2);
+        Plotly.newPlot('myDiv3', data3);
+    </script>
 </body>
+
 </html>

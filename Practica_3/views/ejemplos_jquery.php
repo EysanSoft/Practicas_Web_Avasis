@@ -42,13 +42,16 @@
               Práctica 3
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="../index.php">Formulario con Jquery Submit</a></li>
+              <li><a class="dropdown-item" href="../index.php">Registro de Usuarios (C)</a></li>
               <li><a class="dropdown-item active" href="./ejemplos_jquery.php">Demo Jquery</a></li>
-              <li><a class="dropdown-item" href="./tabla_usuarios.php">Tabla Usuarios</a></li>
+              <li><a class="dropdown-item" href="./tabla_usuarios.php">Tabla de Usuarios (RUD)</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../Practica_4/index.php">Práctica 4 / Registro de Usuarios por Xlsx</a>
+            <a class="nav-link" href="../../Practica_4/index.php">Práctica 4 / Usuarios y Documentos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../Practica_5/index.php">Práctica 5 / Gráficas</a>
           </li>
         </ul>
       </div>

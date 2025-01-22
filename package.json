@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/EysanSoft/Practicas_Web_Avasis#readme",
   "dependencies": {
+    "plotly.js-dist-min": "^2.35.3",
     "sweetalert2": "^11.15.10"
   }
 }
